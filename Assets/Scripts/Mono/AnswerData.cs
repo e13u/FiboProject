@@ -65,6 +65,7 @@ public class AnswerData : MonoBehaviour {
         {
             events.UpdateQuestionAnswer(this);
         }
+        events.AcceptAnswer();
     }
     /// <summary>
     /// Function that is called to update UI.

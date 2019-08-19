@@ -15,6 +15,9 @@ public class GameEvents : ScriptableObject {
     public delegate void    ScoreUpdatedCallback();
     public                  ScoreUpdatedCallback                ScoreUpdated                    = null;
 
+    public delegate void AcceptAnswerCallback();
+    public AcceptAnswerCallback AcceptAnswer = null;
+
     [HideInInspector]
     public                  int                                 level                           = 1;
     public const            int                                 maxLevel                        = 1;

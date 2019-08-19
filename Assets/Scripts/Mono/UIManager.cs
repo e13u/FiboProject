@@ -158,12 +158,12 @@ public class UIManager : MonoBehaviour {
         {
             case ResolutionScreenType.Correct:
                 uIElements.ResolutionBG.color = parameters.CorrectBGColor;
-                uIElements.ResolutionStateInfoText.text = "CORRECT!";
+                uIElements.ResolutionStateInfoText.text = "resposta certa!";
                 uIElements.ResolutionScoreText.text = "+" + score;
                 break;
             case ResolutionScreenType.Incorrect:
                 uIElements.ResolutionBG.color = parameters.IncorrectBGColor;
-                uIElements.ResolutionStateInfoText.text = "WRONG!";
+                uIElements.ResolutionStateInfoText.text = "resposta errada :(";
                 uIElements.ResolutionScoreText.text = "-" + score;
                 break;
             case ResolutionScreenType.Finish:

@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour {
     private void OnEnable()
     {
         events.UpdateQuestionAnswer += UpdateAnswers;
+        events.AcceptAnswer += Accept;
     }
     /// <summary>
     /// Function that is called when the behaviour becomes disabled
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour {
     private void OnDisable()
     {
         events.UpdateQuestionAnswer -= UpdateAnswers;
+        events.AcceptAnswer -= Accept;
     }
 
     /// <summary>
