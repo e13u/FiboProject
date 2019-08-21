@@ -2,149 +2,128 @@
 <Data xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Questions>
     <Question>
-      <Info>3+3</Info>
+      <Info>Qual a classe gramatical da palavra: Tu</Info>
       <Answers>
         <Answer>
-          <Info>3</Info>
+          <Info>Substantivo</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info>4</Info>
+          <Info>Verbo</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info>8</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>6</Info>
+          <Info>Pronome</Info>
           <IsCorrect>true</IsCorrect>
         </Answer>
         <Answer>
-          <Info>9</Info>
+          <Info>Adjetivo</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Advérbio</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
       </Answers>
       <UseTimer>true</UseTimer>
-      <Timer>15</Timer>
+      <Timer>30</Timer>
       <Type>Single</Type>
-      <AddScore>1</AddScore>
+      <AddScore>0</AddScore>
     </Question>
     <Question>
-      <Info>3+6</Info>
+      <Info>Qual a classe gramatical da palavra: Programar</Info>
       <Answers>
         <Answer>
-          <Info>2</Info>
+          <Info>Substantivo</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info>0</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>6</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>9</Info>
+          <Info>Verbo</Info>
           <IsCorrect>true</IsCorrect>
         </Answer>
         <Answer>
-          <Info>10</Info>
+          <Info>Pronome</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Adjetivo</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Advérbio</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
       </Answers>
-      <UseTimer>true</UseTimer>
-      <Timer>15</Timer>
+      <UseTimer>false</UseTimer>
+      <Timer>30</Timer>
       <Type>Single</Type>
-      <AddScore>10</AddScore>
+      <AddScore>0</AddScore>
     </Question>
     <Question>
-      <Info>3*3</Info>
+      <Info>Em qual das formas de porquês se usa no fim de frases?</Info>
       <Answers>
         <Answer>
-          <Info>2</Info>
+          <Info>por que</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info>0</Info>
+          <Info>porque</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info>6</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>9</Info>
+          <Info>por quê</Info>
           <IsCorrect>true</IsCorrect>
         </Answer>
         <Answer>
-          <Info>10</Info>
+          <Info>porquê</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Porquê</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
       </Answers>
       <UseTimer>true</UseTimer>
-      <Timer>15</Timer>
+      <Timer>30</Timer>
       <Type>Single</Type>
-      <AddScore>10</AddScore>
+      <AddScore>0</AddScore>
     </Question>
     <Question>
-      <Info>200-200</Info>
+      <Info>A Primeira Geração da literatura romântica no Brasil foi marcada pelo:</Info>
       <Answers>
         <Answer>
-          <Info>2</Info>
+          <Info>Crítica Social</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info>0</Info>
+          <Info />
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info />
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Nacionalismo</Info>
           <IsCorrect>true</IsCorrect>
         </Answer>
         <Answer>
-          <Info>6</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>9</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>10</Info>
+          <Info>Métrica perfeita</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
       </Answers>
       <UseTimer>true</UseTimer>
-      <Timer>15</Timer>
+      <Timer>3</Timer>
       <Type>Single</Type>
-      <AddScore>1</AddScore>
+      <AddScore>0</AddScore>
     </Question>
     <Question>
-      <Info>1000/100</Info>
-      <Answers>
-        <Answer>
-          <Info>2</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>0</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>6</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>9</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>10</Info>
-          <IsCorrect>true</IsCorrect>
-        </Answer>
-      </Answers>
-      <UseTimer>true</UseTimer>
-      <Timer>15</Timer>
-      <Type>Single</Type>
-      <AddScore>10</AddScore>
+      <Info />
+      <Answers />
+      <UseTimer>false</UseTimer>
+      <Timer>0</Timer>
+      <Type>Multi</Type>
+      <AddScore>0</AddScore>
     </Question>
   </Questions>
 </Data>
