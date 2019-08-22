@@ -18,9 +18,10 @@ public class GameEvents : ScriptableObject {
     public delegate void AcceptAnswerCallback();
     public AcceptAnswerCallback AcceptAnswer = null;
 
-    [HideInInspector]
-    public                  int                                 level                           = 1;
-    public const            int                                 maxLevel                        = 1;
+    public                  int                                 round                           = 1;
+    public                  int                                 maxRound                        = 6;
+    public                  int                                 currentQuestionThemeNumber      = 0;
+    public                  int                                 maxQuestionForTheme             = 3;
 
     [HideInInspector]
     public                  int                                 CurrentFinalScore               = 0;

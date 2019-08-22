@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -29,11 +30,19 @@ public class GameManager : MonoBehaviour {
     private             IEnumerator         IE_WaitTillNextRound    = null;
     private             IEnumerator         IE_StartTimer           = null;
 
+    public List<int> selectedThemes = new List<int>();
+    private int currentTheme = 0;
+
+    //temp  
+    public Text themeText;
+    public Text roundText;
+
     private             bool                IsFinished
     {
         get
         {
-            return (FinishedQuestions.Count < data.Questions.Length) ? false : true;
+            //return (FinishedQuestions.Count < data.Questions.Length) ? false : true;
+            return (events.round > events.maxRound) ? true : false;
         }
     }
 
@@ -64,7 +73,7 @@ public class GameManager : MonoBehaviour {
     private void Awake()
     {
         //If current level is a first level, reset the final score back to zero.
-        if (events.level == 1) { events.CurrentFinalScore = 0; }
+        //if (events.round == 1) { events.CurrentFinalScore = 0; }
     }
 
     /// <summary>
@@ -73,19 +82,43 @@ public class GameManager : MonoBehaviour {
     private void Start()
     {
         events.StartupHighscore = PlayerPrefs.GetInt(GameUtility.SavePrefKey);
-
-        timerDefaultColor = timerText.color;
-        LoadData();
+        events.round = 1;
+        //timerDefaultColor = timerText.color;
 
         timerStateParaHash = Animator.StringToHash("TimerState");
 
         var seed = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
         UnityEngine.Random.InitState(seed);
+        selectedThemes = new List<int>(GameUtility.sortedThemes);
 
-        Display();
+        SortTheme();
+    }
+    #endregion
+
+    //Sorteia um dos temas da lista
+    void SortTheme()
+    {
+        currentTheme = selectedThemes[Random.Range(0, selectedThemes.Count)];
+        selectedThemes.Remove(currentTheme);
+
+        themeText.text = GameUtility.ThemeNameText(currentTheme);
+
+        LoadData();
     }
 
-    #endregion
+    /// <summary>
+    /// Function that is called to load data from the xml file.
+    /// </summary>
+    void LoadData()
+    {
+        //var path = Path.Combine(GameUtility.FileDir, GameUtility.FileName + events.round + ".xml");
+        var path = Path.Combine(GameUtility.FileDir, GameUtility.ThemeNameText(currentTheme) + ".xml");
+        data = Data.Fetch(path);
+        events.currentQuestionThemeNumber = 1;
+        IE_WaitTillNextRound = WaitTillNextRound();
+        StartCoroutine(IE_WaitTillNextRound);
+        //Display();
+    }
 
     /// <summary>
     /// Function that is called to update new selected answer.
@@ -154,17 +187,19 @@ public class GameManager : MonoBehaviour {
         bool isCorrect = CheckAnswers();
         FinishedQuestions.Add(currentQuestion);
 
+        events.currentQuestionThemeNumber++;
+
         UpdateScore(isCorrect ? data.Questions[currentQuestion].AddScore : -data.Questions[currentQuestion].AddScore);
 
-        if (IsFinished)
-        {
-            events.level++;
-            if (events.level > GameEvents.maxLevel)
-            {
-                events.level = 1;
-            }
-            SetHighscore();
-        }
+        //if (IsFinished)
+        //{
+        //    events.round++;
+        //    if (events.round > GameEvents.maxRound)
+        //    {
+        //        events.round = 1;
+        //    }
+        //    SetHighscore();
+        //}
 
         var type 
             = (IsFinished) 
@@ -184,6 +219,12 @@ public class GameManager : MonoBehaviour {
             }
             IE_WaitTillNextRound = WaitTillNextRound();
             StartCoroutine(IE_WaitTillNextRound);
+        }
+
+        if (events.currentQuestionThemeNumber > events.maxQuestionForTheme)
+        {
+            events.round++;
+            SortTheme();
         }
     }
 
@@ -273,21 +314,12 @@ public class GameManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// Function that is called to load data from the xml file.
-    /// </summary>
-    void LoadData()
-    {
-        var path = Path.Combine(GameUtility.FileDir, GameUtility.FileName + events.level + ".xml");
-        data = Data.Fetch(path);
-    }
-
-    /// <summary>
     /// Function that is called restart the game.
     /// </summary>
     public void RestartGame()
     {
         //If next level is the first level, meaning that we start playing a game again, reset the final score.
-        if (events.level == 1) { events.CurrentFinalScore = 0; }
+        if (events.round == 1) { events.CurrentFinalScore = 0; }
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -297,7 +329,7 @@ public class GameManager : MonoBehaviour {
     public void QuitGame()
     {
         //On quit reset the current level back to the first level.
-        events.level = 1;
+        events.round = 1;
 
         Application.Quit();
     }

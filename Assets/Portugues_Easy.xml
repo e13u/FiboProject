@@ -96,11 +96,11 @@
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info />
+          <Info>Religiosidade</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info />
+          <Info>Obscuridade</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
@@ -113,16 +113,37 @@
         </Answer>
       </Answers>
       <UseTimer>true</UseTimer>
-      <Timer>3</Timer>
+      <Timer>30</Timer>
       <Type>Single</Type>
       <AddScore>0</AddScore>
     </Question>
     <Question>
-      <Info />
-      <Answers />
-      <UseTimer>false</UseTimer>
-      <Timer>0</Timer>
-      <Type>Multi</Type>
+      <Info>Qual desses escritores foi um dos fundadores da Academia Brasileira de Letras</Info>
+      <Answers>
+        <Answer>
+          <Info>Olavo Bilac</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Aluísio Azevedo</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Gonçalves Dias</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Machado de Assis</Info>
+          <IsCorrect>true</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Carlos Drummond de Andrade</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+      </Answers>
+      <UseTimer>true</UseTimer>
+      <Timer>30</Timer>
+      <Type>Single</Type>
       <AddScore>0</AddScore>
     </Question>
   </Questions>

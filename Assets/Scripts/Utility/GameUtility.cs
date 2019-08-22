@@ -1,8 +1,10 @@
 ﻿using System.IO;
 using System.Xml.Serialization;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameUtility {
+    public static List<int> sortedThemes = new List<int> {0,1,2,3,4,5 };
 
     public const float      ResolutionDelayTime     = 1;
     public const string     SavePrefKey             = "Game_Highscore_Value";
@@ -13,6 +15,27 @@ public class GameUtility {
         get
         {
             return Application.dataPath + "/";
+        }
+    }
+
+    public static string ThemeNameText(int themeId)
+    {
+        switch (themeId)
+        {
+            case 0:
+                return "Biologia_Easy";
+            case 1:
+                return "Fisica_Easy";
+            case 2:
+                return "Geografia_Easy";
+            case 3:
+                return "Historia_Easy";
+            case 4:
+                return "Matematica_Easy";
+            case 5:
+                return "Portugues_Easy";
+            default:
+                return "Meme_Easy";
         }
     }
 }
