@@ -20,10 +20,12 @@ public class GameManager : MonoBehaviour {
     [SerializeField]    Color               timerHalfWayOutColor    = Color.yellow;
     [SerializeField]    Color               timerAlmostOutColor     = Color.red;
     private             Color               timerDefaultColor       = Color.white;
+    private             int                 timeLeft                = 0;
 
     private             List<AnswerData>    PickedAnswers           = new List<AnswerData>();
     private             List<int>           FinishedQuestions       = new List<int>();
     private             int                 currentQuestion         = 0;
+    private int correctAnswerStreak = 0;
 
     private             int                 timerStateParaHash      = 0;
 
@@ -81,8 +83,11 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     private void Start()
     {
+        InitializeDPK();
         events.StartupHighscore = PlayerPrefs.GetInt(GameUtility.SavePrefKey);
         events.round = 1;
+        roundText.text = "Round: "+events.round.ToString();
+
         //timerDefaultColor = timerText.color;
 
         timerStateParaHash = Animator.StringToHash("TimerState");
@@ -98,6 +103,7 @@ public class GameManager : MonoBehaviour {
     //Sorteia um dos temas da lista
     void SortTheme()
     {
+        correctAnswerStreak = 0;
         currentTheme = selectedThemes[Random.Range(0, selectedThemes.Count)];
         selectedThemes.Remove(currentTheme);
 
@@ -116,6 +122,7 @@ public class GameManager : MonoBehaviour {
         data = Data.Fetch(path);
         events.currentQuestionThemeNumber = 1;
         IE_WaitTillNextRound = WaitTillNextRound();
+        //Corrotina chama o Display
         StartCoroutine(IE_WaitTillNextRound);
         //Display();
     }
@@ -189,7 +196,28 @@ public class GameManager : MonoBehaviour {
 
         events.currentQuestionThemeNumber++;
 
-        UpdateScore(isCorrect ? data.Questions[currentQuestion].AddScore : -data.Questions[currentQuestion].AddScore);
+        if (isCorrect)
+        {
+            correctAnswerStreak++;
+            //UpdateScore(data.Questions[currentQuestion].AddScore);
+            int totalTime = data.Questions[currentQuestion].Timer;
+            int timeCoeficent = timeLeft / totalTime;
+
+            int score = events.baseScore * correctAnswerStreak;
+            Debug.Log("BaseScore: " + events.baseScore + "  " + "TimeCoeficent: "
+                + timeCoeficent + "  " + "CorrectAnswerStreak: " + correctAnswerStreak);
+            UpdateScore(currentTheme, score);
+        }
+        else
+        {
+            if(correctAnswerStreak > 0)
+                correctAnswerStreak = 0;    
+            correctAnswerStreak--;
+
+            //UpdateScore(-data.Questions[currentQuestion].AddScore);
+            int score = (correctAnswerStreak-1) * 10;
+            UpdateScore(currentTheme, score);
+        }
 
         //if (IsFinished)
         //{
@@ -220,10 +248,15 @@ public class GameManager : MonoBehaviour {
             IE_WaitTillNextRound = WaitTillNextRound();
             StartCoroutine(IE_WaitTillNextRound);
         }
+        else
+        {
+
+        }
 
         if (events.currentQuestionThemeNumber > events.maxQuestionForTheme)
         {
             events.round++;
+            roundText.text = "Round: " + events.round.ToString();
             SortTheme();
         }
     }
@@ -253,7 +286,7 @@ public class GameManager : MonoBehaviour {
     IEnumerator StartTimer()
     {
         var totalTime = data.Questions[currentQuestion].Timer;
-        var timeLeft = totalTime;
+        timeLeft = totalTime;
 
         timerText.color = timerDefaultColor;
         while (timeLeft > 0)
@@ -348,9 +381,10 @@ public class GameManager : MonoBehaviour {
     /// <summary>
     /// Function that is called update the score and update the UI.
     /// </summary>
-    private void UpdateScore(int add)
+    private void UpdateScore(int themeiD, int add)
     {
-        events.CurrentFinalScore += add;
+        //events.DKP[GameUtility.ThemeNameText(themeiD)] += add;
+        UpdateDKP(GameUtility.ThemeNameText(themeiD), add);
         events.ScoreUpdated?.Invoke();
     }
 
@@ -377,4 +411,30 @@ public class GameManager : MonoBehaviour {
     }
 
     #endregion
+    #region DKP
+    void InitializeDPK()
+    {
+        events.DKP.Clear();
+        events.DPKList.Clear();
+
+        events.DKP.Add("Biologia_Easy", 0);
+        events.DKP.Add("Fisica_Easy", 0);
+        events.DKP.Add("Geografia_Easy", 0);
+        events.DKP.Add("Historia_Easy", 0);
+        events.DKP.Add("Matematica_Easy", 0);
+        events.DKP.Add("Portugues_Easy", 0);
+
+        for (int i = 0; i < events.DKP.Count; i++)
+        {
+            events.DPKList.Add(0);
+        }
+    }
+
+    void UpdateDKP(string theme, int scoreDKP)
+    {
+        events.DKP[theme] += scoreDKP;
+        events.DPKList[GameUtility.ThemeNameText(theme)] += scoreDKP;
+    }
+    #endregion
+
 }

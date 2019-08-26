@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "GameEvents", menuName = "Quiz/new GameEvents")]
 public class GameEvents : ScriptableObject {
@@ -18,13 +19,19 @@ public class GameEvents : ScriptableObject {
     public delegate void AcceptAnswerCallback();
     public AcceptAnswerCallback AcceptAnswer = null;
 
+    public int baseScore = 50;
+    [Space]
     public                  int                                 round                           = 1;
     public                  int                                 maxRound                        = 6;
+    [Space]
     public                  int                                 currentQuestionThemeNumber      = 0;
     public                  int                                 maxQuestionForTheme             = 3;
-
-    [HideInInspector]
+    [Space]
     public                  int                                 CurrentFinalScore               = 0;
-    [HideInInspector]
     public                  int                                 StartupHighscore                = 0;
+    [Space]
+    [SerializeField]
+    public          Dictionary<string, int>                     DKP = new Dictionary<string, int>();
+    public                  int                                 PKP                             = 0;
+    public List<int> DPKList = new List<int>();
 }

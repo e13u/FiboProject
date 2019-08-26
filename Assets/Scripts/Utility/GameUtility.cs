@@ -38,7 +38,30 @@ public class GameUtility {
                 return "Meme_Easy";
         }
     }
+
+    public static int ThemeNameText(string themeId)
+    {
+        switch (themeId)
+        {
+            case "Biologia_Easy":
+                return 0;
+            case "Fisica_Easy":
+                return 1;
+            case "Geografia_Easy":
+                return 2;
+            case "Historia_Easy":
+                return 3;
+            case "Matematica_Easy":
+                return 4;
+            case "Portugues_Easy":
+                return 5;
+            default:
+                return 6;
+        }
+    }
 }
+
+
 [System.Serializable()]
 public class Data
 {
