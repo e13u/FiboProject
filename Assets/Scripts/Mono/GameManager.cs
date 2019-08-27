@@ -250,7 +250,7 @@ public class GameManager : MonoBehaviour {
         }
         else
         {
-
+            UpdatePKP();
         }
 
         if (events.currentQuestionThemeNumber > events.maxQuestionForTheme)
@@ -417,24 +417,41 @@ public class GameManager : MonoBehaviour {
         events.DKP.Clear();
         events.DPKList.Clear();
 
-        events.DKP.Add("Biologia_Easy", 0);
-        events.DKP.Add("Fisica_Easy", 0);
-        events.DKP.Add("Geografia_Easy", 0);
-        events.DKP.Add("Historia_Easy", 0);
-        events.DKP.Add("Matematica_Easy", 0);
-        events.DKP.Add("Portugues_Easy", 0);
+        events.DKP.Add("Biologia_Easy", 100);
+        events.DKP.Add("Fisica_Easy", 100);
+        events.DKP.Add("Geografia_Easy", 100);
+        events.DKP.Add("Historia_Easy", 100);
+        events.DKP.Add("Matematica_Easy", 100);
+        events.DKP.Add("Portugues_Easy", 100);
 
         for (int i = 0; i < events.DKP.Count; i++)
         {
-            events.DPKList.Add(0);
+            events.DPKList.Add(100);
         }
     }
 
     void UpdateDKP(string theme, int scoreDKP)
     {
         events.DKP[theme] += scoreDKP;
+        if (events.DKP[theme] < 0)
+            events.DKP[theme] = 0;
         events.DPKList[GameUtility.ThemeNameText(theme)] += scoreDKP;
+        if (events.DPKList[GameUtility.ThemeNameText(theme)] < 0)
+            events.DPKList[GameUtility.ThemeNameText(theme)] = 0;
     }
+
+    void UpdatePKP()
+    {
+        int total = 0;
+        for (int i = 0; i < events.DKP.Count; i++)
+        {
+            total += events.DKP[GameUtility.ThemeNameText(i)];
+        }
+        Debug.Log(total);
+        int media = total / events.DKP.Count;
+        Debug.Log(media);
+    }
+
     #endregion
 
 }
