@@ -84,16 +84,16 @@ public class GameManager : MonoBehaviour {
     private void Start()
     {
         InitializeDPK();
-        events.StartupHighscore = PlayerPrefs.GetInt(GameUtility.SavePrefKey);
+        events.StartupHighscore = PlayerPrefs.GetInt(GameUtility.SavePKPKey);
         events.round = 1;
         roundText.text = "Round: "+events.round.ToString();
 
         //timerDefaultColor = timerText.color;
 
-        timerStateParaHash = Animator.StringToHash("TimerState");
+        //timerStateParaHash = Animator.StringToHash("TimerState");
 
-        var seed = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
-        UnityEngine.Random.InitState(seed);
+        //var seed = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
+        //UnityEngine.Random.InitState(seed);
         selectedThemes = new List<int>(GameUtility.sortedThemes);
 
         SortTheme();
@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour {
     void SortTheme()
     {
         correctAnswerStreak = 0;
+        //ATENÇÃO ERRO!
         currentTheme = selectedThemes[Random.Range(0, selectedThemes.Count)];
         selectedThemes.Remove(currentTheme);
 
@@ -120,11 +121,9 @@ public class GameManager : MonoBehaviour {
         //var path = Path.Combine(GameUtility.FileDir, GameUtility.FileName + events.round + ".xml");
         var path = Path.Combine(GameUtility.FileDir, GameUtility.ThemeNameText(currentTheme) + ".xml");
         data = Data.Fetch(path);
-        events.currentQuestionThemeNumber = 1;
         IE_WaitTillNextRound = WaitTillNextRound();
         //Corrotina chama o Display
         StartCoroutine(IE_WaitTillNextRound);
-        //Display();
     }
 
     /// <summary>
@@ -194,8 +193,6 @@ public class GameManager : MonoBehaviour {
         bool isCorrect = CheckAnswers();
         FinishedQuestions.Add(currentQuestion);
 
-        events.currentQuestionThemeNumber++;
-
         if (isCorrect)
         {
             correctAnswerStreak++;
@@ -204,8 +201,8 @@ public class GameManager : MonoBehaviour {
             int timeCoeficent = timeLeft / totalTime;
 
             int score = events.baseScore * correctAnswerStreak;
-            Debug.Log("BaseScore: " + events.baseScore + "  " + "TimeCoeficent: "
-                + timeCoeficent + "  " + "CorrectAnswerStreak: " + correctAnswerStreak);
+            //Debug.Log("BaseScore: " + events.baseScore + "  " + "TimeCoeficent: "
+                //+ timeCoeficent + "  " + "CorrectAnswerStreak: " + correctAnswerStreak);
             UpdateScore(currentTheme, score);
         }
         else
@@ -219,28 +216,23 @@ public class GameManager : MonoBehaviour {
             UpdateScore(currentTheme, score);
         }
 
-        //if (IsFinished)
-        //{
-        //    events.round++;
-        //    if (events.round > GameEvents.maxRound)
-        //    {
-        //        events.round = 1;
-        //    }
-        //    SetHighscore();
-        //}
-
-        var type 
-            = (IsFinished) 
-            ? UIManager.ResolutionScreenType.Finish 
-            : (isCorrect) ? UIManager.ResolutionScreenType.Correct 
-            : UIManager.ResolutionScreenType.Incorrect;
-
-        events.DisplayResolutionScreen?.Invoke(type, data.Questions[currentQuestion].AddScore);
-
-        AudioManager.Instance.PlaySound((isCorrect) ? "CorrectSFX" : "IncorrectSFX");
-
-        if (type != UIManager.ResolutionScreenType.Finish)
+        events.currentQuestionThemeNumber++;
+        if(events.currentQuestionThemeNumber > events.maxQuestionForTheme)
         {
+            events.currentQuestionThemeNumber = 1;
+            events.round ++;
+            roundText.text = "Round: " + events.round.ToString();
+
+            if (IsFinished)
+            {
+                SetHighscore();
+            }
+            else
+            {
+                SortTheme();
+            }
+        }
+        else{
             if (IE_WaitTillNextRound != null)
             {
                 StopCoroutine(IE_WaitTillNextRound);
@@ -248,17 +240,17 @@ public class GameManager : MonoBehaviour {
             IE_WaitTillNextRound = WaitTillNextRound();
             StartCoroutine(IE_WaitTillNextRound);
         }
-        else
-        {
-            UpdatePKP();
-        }
 
-        if (events.currentQuestionThemeNumber > events.maxQuestionForTheme)
-        {
-            events.round++;
-            roundText.text = "Round: " + events.round.ToString();
-            SortTheme();
-        }
+
+        var type
+            = (IsFinished)
+            ? UIManager.ResolutionScreenType.Finish
+            : (isCorrect) ? UIManager.ResolutionScreenType.Correct
+            : UIManager.ResolutionScreenType.Incorrect;
+
+        events.DisplayResolutionScreen?.Invoke(type, data.Questions[currentQuestion].AddScore);
+
+        AudioManager.Instance.PlaySound((isCorrect) ? "CorrectSFX" : "IncorrectSFX");
     }
 
     #region Timer Methods
@@ -279,7 +271,7 @@ public class GameManager : MonoBehaviour {
                     StopCoroutine(IE_StartTimer);
                 }
 
-                timerAnimtor.SetInteger(timerStateParaHash, 1);
+                //timerAnimtor.SetInteger(timerStateParaHash, 1);
                 break;
         }
     }
@@ -372,11 +364,12 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     private void SetHighscore()
     {
-        var highscore = PlayerPrefs.GetInt(GameUtility.SavePrefKey);
-        if (highscore < events.CurrentFinalScore)
-        {
-            PlayerPrefs.SetInt(GameUtility.SavePrefKey, events.CurrentFinalScore);
-        }
+        UpdatePKP();
+        var pkp = PlayerPrefs.GetInt(GameUtility.SavePKPKey);
+        //if (pkp < events.CurrentFinalScore)
+        //{
+        PlayerPrefs.SetInt(GameUtility.SavePKPKey, events.PKP);
+        //}
     }
     /// <summary>
     /// Function that is called update the score and update the UI.
@@ -450,6 +443,7 @@ public class GameManager : MonoBehaviour {
         Debug.Log(total);
         int media = total / events.DKP.Count;
         Debug.Log(media);
+        events.PKP = media;
     }
 
     #endregion

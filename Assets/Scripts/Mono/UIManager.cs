@@ -152,8 +152,9 @@ public class UIManager : MonoBehaviour {
     /// </summary>
     void UpdateResUI(ResolutionScreenType type, int score)
     {
-        var highscore = PlayerPrefs.GetInt(GameUtility.SavePrefKey);
-
+        //var highscore = PlayerPrefs.GetInt(GameUtility.SavePKPKey);
+        var highscore = events.PKP;
+        
         switch (type)
         {
             case ResolutionScreenType.Correct:
@@ -173,7 +174,7 @@ public class UIManager : MonoBehaviour {
                 StartCoroutine(CalculateScore());
                 uIElements.FinishUIElements.gameObject.SetActive(true);
                 uIElements.HighScoreText.gameObject.SetActive(true);
-                uIElements.HighScoreText.text = ((highscore > events.StartupHighscore) ? "<color=yellow>new </color>" : string.Empty) + "PKP: " + GameManager;
+                uIElements.HighScoreText.text = "PKP: " + highscore;
                 break;
         }
     }

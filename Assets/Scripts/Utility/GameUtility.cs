@@ -7,7 +7,7 @@ public class GameUtility {
     public static List<int> sortedThemes = new List<int> {0,1,2,3,4,5 };
 
     public const float      ResolutionDelayTime     = 1;
-    public const string     SavePrefKey             = "Game_Highscore_Value";
+    public const string     SavePKPKey             = "PKP_Value";
 
     public const string     FileName                = "Q";
     public static string    FileDir                 

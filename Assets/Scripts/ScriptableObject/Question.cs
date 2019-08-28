@@ -17,7 +17,7 @@ public class Question {
     public String       Info        = null;
     public Answer[]     Answers     = new Answer[5];
     public Boolean      UseTimer    = true;
-    public Int32        Timer       = 15;
+    public Int32        Timer       = 30;
     public AnswerType   Type        = AnswerType.Single;
     public Int32        AddScore    = 1;
 
