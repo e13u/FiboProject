@@ -2,149 +2,149 @@
 <Data xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Questions>
     <Question>
-      <Info>Qual a cor  do cavalo branco de Napoleão?</Info>
+      <Info>Qual o primeiro nível mais geral de classificação?</Info>
       <Answers>
         <Answer>
-          <Info>preto</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>amarelo</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>azul</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>branco</Info>
+          <Info>Reino</Info>
           <IsCorrect>true</IsCorrect>
         </Answer>
         <Answer>
-          <Info>laranja</Info>
+          <Info>Filo</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Classe</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Ordem</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Gênero</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
       </Answers>
       <UseTimer>true</UseTimer>
       <Timer>10</Timer>
       <Type>Single</Type>
-      <AddScore>1</AddScore>
+      <AddScore>0</AddScore>
     </Question>
     <Question>
-      <Info>Quem "descobriu" o Brasil?</Info>
+      <Info>Qual sistema do corpo humano é responsável por estímulos elétricos?</Info>
       <Answers>
         <Answer>
-          <Info>Hebe</Info>
+          <Info>Digestório</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info>Pero Vaz de Caminha</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>Pedro Alvarez Cabral</Info>
+          <Info>Nervoso</Info>
           <IsCorrect>true</IsCorrect>
         </Answer>
         <Answer>
-          <Info>Cristóvão Colombo</Info>
+          <Info>Excretor</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info>Cristiano Ronaldo</Info>
+          <Info>Circulatório</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Reprodutor</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
       </Answers>
       <UseTimer>true</UseTimer>
       <Timer>10</Timer>
       <Type>Single</Type>
-      <AddScore>10</AddScore>
+      <AddScore>0</AddScore>
     </Question>
     <Question>
-      <Info>Em qual ano iniciou a revolução francesa?</Info>
+      <Info>Qual tipo de divisão cria os gametas?</Info>
       <Answers>
         <Answer>
-          <Info>1785</Info>
+          <Info>Mutação</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info>1786</Info>
+          <Info>Cifose</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info>1787</Info>
+          <Info>Citose</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info>1788</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>1789</Info>
+          <Info>Meiose</Info>
           <IsCorrect>true</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Fagocitose</Info>
+          <IsCorrect>false</IsCorrect>
         </Answer>
       </Answers>
       <UseTimer>true</UseTimer>
       <Timer>10</Timer>
       <Type>Single</Type>
-      <AddScore>10</AddScore>
+      <AddScore>0</AddScore>
     </Question>
     <Question>
-      <Info>Como era conhecido Joaquim José da Silva Xavier?</Info>
+      <Info>Quais seres vivos surgiram primeiro?</Info>
       <Answers>
         <Answer>
-          <Info>Zumbi</Info>
+          <Info>Bactérias</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info>Tiradentes</Info>
+          <Info>Peixes</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Algas</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Dinossauros</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Protozoários</Info>
           <IsCorrect>true</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>Dom Ramon</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>Zé</Info>
-          <IsCorrect>false</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>Aleijadinho</Info>
-          <IsCorrect>false</IsCorrect>
         </Answer>
       </Answers>
       <UseTimer>true</UseTimer>
       <Timer>10</Timer>
       <Type>Single</Type>
-      <AddScore>1</AddScore>
+      <AddScore>0</AddScore>
     </Question>
     <Question>
-      <Info>Em qual ano acabou a segunda guerra mundial?</Info>
+      <Info>Qual classificação de plantas não produzem?</Info>
       <Answers>
         <Answer>
-          <Info>1950</Info>
+          <Info>Dioicas</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info>1942</Info>
+          <Info>Embriófitas</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info>1940</Info>
+          <Info>Hermafroditas</Info>
           <IsCorrect>false</IsCorrect>
         </Answer>
         <Answer>
-          <Info>1945</Info>
+          <Info>Angiospermas</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Gimnospermas</Info>
           <IsCorrect>true</IsCorrect>
-        </Answer>
-        <Answer>
-          <Info>1943</Info>
-          <IsCorrect>false</IsCorrect>
         </Answer>
       </Answers>
       <UseTimer>true</UseTimer>
       <Timer>10</Timer>
       <Type>Single</Type>
-      <AddScore>10</AddScore>
+      <AddScore>0</AddScore>
     </Question>
   </Questions>
 </Data>

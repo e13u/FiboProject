@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour {
     private             int                 timeLeft                = 0;
 
     private             List<AnswerData>    PickedAnswers           = new List<AnswerData>();
-    private             List<int>           FinishedQuestions       = new List<int>();
+    public             List<int>           FinishedQuestions       = new List<int>();
     private             int                 currentQuestion         = 0;
     private int correctAnswerStreak = 0;
 
@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour {
             return (events.round > events.maxRound) ? true : false;
         }
     }
+
+    private int currentDPK;
 
     #endregion
 
@@ -104,12 +106,9 @@ public class GameManager : MonoBehaviour {
     void SortTheme()
     {
         correctAnswerStreak = 0;
-        //ATENÇÃO ERRO!
         currentTheme = selectedThemes[Random.Range(0, selectedThemes.Count)];
         selectedThemes.Remove(currentTheme);
-
-        themeText.text = GameUtility.ThemeNameText(currentTheme);
-
+        currentDPK = events.DKP[GameUtility.ThemeNameText(currentTheme)];
         LoadData();
     }
 
@@ -118,8 +117,14 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     void LoadData()
     {
-        //var path = Path.Combine(GameUtility.FileDir, GameUtility.FileName + events.round + ".xml");
-        var path = Path.Combine(GameUtility.FileDir, GameUtility.ThemeNameText(currentTheme) + ".xml");
+        //var path = Path.Combine(GameUtility.FileDir, GameUtility.FileName + events.round + ".xml
+        string dificulty = VerifyTierForThemeDificulty(currentDPK);
+
+        string themeFile = GameUtility.ThemeNameText(currentTheme) +"_"+ dificulty.ToString() + ".xml";
+
+        themeText.text = themeFile;
+        Debug.Log("TEMA+DIFICULDADE:" + themeFile);
+        var path = Path.Combine(GameUtility.FileDir, themeFile);
         data = Data.Fetch(path);
         IE_WaitTillNextRound = WaitTillNextRound();
         //Corrotina chama o Display
@@ -219,6 +224,7 @@ public class GameManager : MonoBehaviour {
         events.currentQuestionThemeNumber++;
         if(events.currentQuestionThemeNumber > events.maxQuestionForTheme)
         {
+            FinishedQuestions.Clear();
             events.currentQuestionThemeNumber = 1;
             events.round ++;
             roundText.text = "Round: " + events.round.ToString();
@@ -410,12 +416,12 @@ public class GameManager : MonoBehaviour {
         events.DKP.Clear();
         events.DPKList.Clear();
 
-        events.DKP.Add("Biologia_Easy", 100);
-        events.DKP.Add("Fisica_Easy", 100);
-        events.DKP.Add("Geografia_Easy", 100);
-        events.DKP.Add("Historia_Easy", 100);
-        events.DKP.Add("Matematica_Easy", 100);
-        events.DKP.Add("Portugues_Easy", 100);
+        events.DKP.Add("Biologia", 100);
+        events.DKP.Add("Fisica", 100);
+        events.DKP.Add("Geografia", 100);
+        events.DKP.Add("Historia", 300);
+        events.DKP.Add("Matematica", 300);
+        events.DKP.Add("Portugues", 100);
 
         for (int i = 0; i < events.DKP.Count; i++)
         {
@@ -446,6 +452,15 @@ public class GameManager : MonoBehaviour {
         events.PKP = media;
     }
 
+    string VerifyTierForThemeDificulty(int tier)
+    {
+        if(tier < 200)
+            return "Easy";
+        else if (tier < 500)
+            return "Medium";
+        else
+            return "Hard";
+    }
     #endregion
 
 }

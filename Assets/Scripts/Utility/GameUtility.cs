@@ -23,19 +23,19 @@ public class GameUtility {
         switch (themeId)
         {
             case 0:
-                return "Biologia_Easy";
+                return "Biologia";
             case 1:
-                return "Fisica_Easy";
+                return "Fisica";
             case 2:
-                return "Geografia_Easy";
+                return "Geografia";
             case 3:
-                return "Historia_Easy";
+                return "Historia";
             case 4:
-                return "Matematica_Easy";
+                return "Matematica";
             case 5:
-                return "Portugues_Easy";
+                return "Portugues";
             default:
-                return "Meme_Easy";
+                return "Meme";
         }
     }
 
@@ -43,17 +43,17 @@ public class GameUtility {
     {
         switch (themeId)
         {
-            case "Biologia_Easy":
+            case "Biologia":
                 return 0;
-            case "Fisica_Easy":
+            case "Fisica":
                 return 1;
-            case "Geografia_Easy":
+            case "Geografia":
                 return 2;
-            case "Historia_Easy":
+            case "Historia":
                 return 3;
-            case "Matematica_Easy":
+            case "Matematica":
                 return 4;
-            case "Portugues_Easy":
+            case "Portugues":
                 return 5;
             default:
                 return 6;

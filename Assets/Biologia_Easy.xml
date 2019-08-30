@@ -26,7 +26,7 @@
         </Answer>
       </Answers>
       <UseTimer>true</UseTimer>
-      <Timer>30</Timer>
+      <Timer>10</Timer>
       <Type>Single</Type>
       <AddScore>0</AddScore>
     </Question>
@@ -55,7 +55,7 @@
         </Answer>
       </Answers>
       <UseTimer>true</UseTimer>
-      <Timer>30</Timer>
+      <Timer>10</Timer>
       <Type>Single</Type>
       <AddScore>0</AddScore>
     </Question>
@@ -84,7 +84,7 @@
         </Answer>
       </Answers>
       <UseTimer>true</UseTimer>
-      <Timer>30</Timer>
+      <Timer>10</Timer>
       <Type>Single</Type>
       <AddScore>0</AddScore>
     </Question>
@@ -113,7 +113,7 @@
         </Answer>
       </Answers>
       <UseTimer>true</UseTimer>
-      <Timer>30</Timer>
+      <Timer>10</Timer>
       <Type>Single</Type>
       <AddScore>0</AddScore>
     </Question>
@@ -142,7 +142,7 @@
         </Answer>
       </Answers>
       <UseTimer>true</UseTimer>
-      <Timer>30</Timer>
+      <Timer>10</Timer>
       <Type>Single</Type>
       <AddScore>0</AddScore>
     </Question>
