@@ -76,8 +76,7 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     private void Awake()
     {
-        //If current level is a first level, reset the final score back to zero.
-        //if (events.round == 1) { events.CurrentFinalScore = 0; }
+        selectedThemes = ThemeManager.Instance.themeList;
     }
 
     /// <summary>
@@ -96,7 +95,7 @@ public class GameManager : MonoBehaviour {
 
         //var seed = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
         //UnityEngine.Random.InitState(seed);
-        selectedThemes = new List<int>(GameUtility.sortedThemes);
+        // selectedThemes = new List<int>(GameUtility.sortedThemes);
 
         SortTheme();
     }

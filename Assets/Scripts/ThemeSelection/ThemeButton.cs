@@ -14,14 +14,23 @@ public class ThemeButton : MonoBehaviour
         buttonImage = GetComponent<Image>();
     }
     public void TurnThemeOnOff(){
-        onOff = !onOff;
-        //onOff == true ? buttonImage.sprite = selectedTheme: buttonImage.sprite = notSelectedTheme;
-        if(onOff){
-            buttonImage.sprite = selectedTheme;
+
+        if(ThemeManager.Instance.themeList.Count > 5){
+            if(onOff){
+                onOff = !onOff;
+                ThemeManager.Instance.AddRemoveThemeList(themeId);
+                buttonImage.sprite = notSelectedTheme;
+            }
         }
         else{
-            buttonImage.sprite = notSelectedTheme;
-        }
+             onOff = !onOff;
             ThemeManager.Instance.AddRemoveThemeList(themeId);
+            if(onOff){
+                buttonImage.sprite = selectedTheme;
+            }
+            else{
+                buttonImage.sprite = notSelectedTheme;
+            }
+        }
     }
 }

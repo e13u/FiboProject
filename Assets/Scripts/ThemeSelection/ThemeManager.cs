@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ThemeManager : MonoBehaviour
 {
@@ -11,12 +12,7 @@ public class ThemeManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        DontDestroyOnLoad(gameObject);
     }
 
     public void AddRemoveThemeList(int themeId){
@@ -28,4 +24,10 @@ public class ThemeManager : MonoBehaviour
         }
         themeList.Sort();
     }
+
+    public void StartGame(){
+        if(themeList.Count == 6)
+            SceneManager.LoadScene("Game");
+    }
+
 }
