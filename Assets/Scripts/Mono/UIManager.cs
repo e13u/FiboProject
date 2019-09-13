@@ -19,6 +19,9 @@ public struct UIManagerParameters
     public Color IncorrectBGColor { get { return incorrectBGColor; } }
     [SerializeField] Color finalBGColor;
     public Color FinalBGColor { get { return finalBGColor; } }
+
+     [Header("Theme Screen Options")]
+    public List<Sprite> themeSpritesDisplay;
 }
 [Serializable()]
 public struct UIElements
@@ -56,6 +59,10 @@ public struct UIElements
 
     [SerializeField] RectTransform finishUIElements;
     public RectTransform FinishUIElements { get { return finishUIElements; } }
+
+    [Space]
+     [SerializeField] RectTransform themeUIDisplay;
+    public RectTransform ThemeUIDisplay {get {return themeUIDisplay;}}
 }
 public class UIManager : MonoBehaviour {
 
@@ -91,6 +98,7 @@ public class UIManager : MonoBehaviour {
         events.UpdateQuestionUI         += UpdateQuestionUI;
         events.DisplayResolutionScreen  += DisplayResolution;
         events.ScoreUpdated             += UpdateScoreUI;
+        events.DisplayThemeScreen       += DisplayThemeScreen;
     }
     /// <summary>
     /// Function that is called when the behaviour becomes disabled
@@ -100,6 +108,7 @@ public class UIManager : MonoBehaviour {
         events.UpdateQuestionUI         -= UpdateQuestionUI;
         events.DisplayResolutionScreen  -= DisplayResolution;
         events.ScoreUpdated             -= UpdateScoreUI;
+        events.DisplayThemeScreen       -= DisplayThemeScreen;
     }
 
     /// <summary>
@@ -112,6 +121,10 @@ public class UIManager : MonoBehaviour {
     }
 
     #endregion
+     void DisplayThemeScreen(int themeId, float alphaPanel){
+        uIElements.ThemeUIDisplay.transform.Find("ThemeImage").GetComponent<Image>().sprite = parameters.themeSpritesDisplay[themeId];
+        uIElements.ThemeUIDisplay.GetComponent<CanvasGroup>().alpha = alphaPanel;
+     }
 
     /// <summary>
     /// Function that is used to update new question UI information.
@@ -129,6 +142,7 @@ public class UIManager : MonoBehaviour {
         UpdateResUI(type, score);
         uIElements.ResolutionScreenAnimator.SetInteger(resStateParaHash, 2);
         uIElements.MainCanvasGroup.blocksRaycasts = false;
+        uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().alpha = 1;
 
         if (type != ResolutionScreenType.Finish)
         {
@@ -145,6 +159,7 @@ public class UIManager : MonoBehaviour {
         yield return new WaitForSeconds(GameUtility.ResolutionDelayTime);
         uIElements.ResolutionScreenAnimator.SetInteger(resStateParaHash, 1);
         uIElements.MainCanvasGroup.blocksRaycasts = true;
+        uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().alpha = 0;
     }
 
     /// <summary>

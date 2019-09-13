@@ -19,6 +19,9 @@ public class GameEvents : ScriptableObject {
     public delegate void AcceptAnswerCallback();
     public AcceptAnswerCallback AcceptAnswer = null;
 
+    public delegate void    DisplayThemeScreenCallback(int themeId, float alphaPanel);
+    public                  DisplayThemeScreenCallback     DisplayThemeScreen =null;
+
     public int baseScore = 50;
     [Space]
     public                  int                                 round                           = 1;

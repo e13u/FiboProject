@@ -119,8 +119,19 @@ public class GameManager : MonoBehaviour {
         selectedThemes.Remove(currentTheme);
         currentDPK = events.DKP[GameUtility.ThemeNameText(currentTheme)];
         LoadData();
+        ThemeDisplay();
     }
-
+    
+    void ThemeDisplay(){
+        //events.UpdateQuestionUI(null);
+        events.DisplayThemeScreen(currentTheme, 1);
+        StartCoroutine("ThemeDisplayWait");
+    }
+    IEnumerator ThemeDisplayWait(){
+        yield return new WaitForSeconds(2);
+        events.DisplayThemeScreen(currentTheme, 0);
+        StartCoroutine(IE_WaitTillNextRound);
+    }
     /// <summary>
     /// Function that is called to load data from the xml file.
     /// </summary>
@@ -137,7 +148,6 @@ public class GameManager : MonoBehaviour {
         data = Data.Fetch(path);
         IE_WaitTillNextRound = WaitTillNextRound();
         //Corrotina chama o Display
-        StartCoroutine(IE_WaitTillNextRound);
     }
 
     /// <summary>
@@ -238,6 +248,7 @@ public class GameManager : MonoBehaviour {
             events.round ++;
             roundText.text = "Round: " + events.round.ToString();
 
+
             if (IsFinished)
             {
                 SetHighscore();
@@ -320,10 +331,6 @@ public class GameManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(GameUtility.ResolutionDelayTime);
         Display();
-    }
-
-    IEnumerator ThemeDisplayWait(){
-         yield return new WaitForSeconds(GameUtility.ResolutionDelayTime);
     }
 
     #endregion
