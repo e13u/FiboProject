@@ -32,6 +32,6 @@ public class GameEvents : ScriptableObject {
     [Space]
     [SerializeField]
     public          Dictionary<string, int>                     DKP = new Dictionary<string, int>();
-    public                  int                                 PKP                             = 0;
+    public                  float                                 PKP                             = 0;
     public List<int> DPKList = new List<int>();
 }

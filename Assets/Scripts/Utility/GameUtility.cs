@@ -22,18 +22,24 @@ public class GameUtility {
     {
         switch (themeId)
         {
-            case 0:
-                return "Biologia";
             case 1:
-                return "Fisica";
-            case 2:
-                return "Geografia";
-            case 3:
-                return "Historia";
-            case 4:
-                return "Matematica";
-            case 5:
                 return "Portugues";
+            case 2:
+                return "Biologia";
+            case 3:
+                return "Geografia";
+            case 4:
+                return "Artes";
+            case 5:
+                return "Matematica";
+            case 6:
+                return "Filosofia";
+            case 7:
+                return "Fisica";
+            case 8:
+                return "Historia";
+            case 9:
+                return "Sociologia";
             default:
                 return "Meme";
         }
@@ -43,20 +49,26 @@ public class GameUtility {
     {
         switch (themeId)
         {
-            case "Biologia":
-                return 0;
-            case "Fisica":
-                return 1;
-            case "Geografia":
-                return 2;
-            case "Historia":
-                return 3;
-            case "Matematica":
-                return 4;
             case "Portugues":
+                return 1;
+            case "Biologia":
+                return 2;
+            case "Geografia":
+                return 3;
+            case "Artes":
+                return 4;
+            case "Matematica":
                 return 5;
-            default:
+            case "Filosofia":
                 return 6;
+            case "Fisica":
+                return 7;
+            case "Historia":
+                return 8;
+            case "Sociologia":
+                return 9;
+            default:
+                return 10;
         }
     }
 }

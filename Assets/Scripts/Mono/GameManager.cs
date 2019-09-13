@@ -76,7 +76,17 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     private void Awake()
     {
-        selectedThemes = ThemeManager.Instance.themeList;
+        try
+        {
+            selectedThemes = ThemeManager.Instance.themeList;
+        }
+        catch (System.Exception)
+        {
+            
+            selectedThemes = new List<int> {1,2,3,4,5,6};
+        }
+        selectedThemes.Add(0);
+        selectedThemes.Sort();
     }
 
     /// <summary>
@@ -105,7 +115,7 @@ public class GameManager : MonoBehaviour {
     void SortTheme()
     {
         correctAnswerStreak = 0;
-        currentTheme = selectedThemes[Random.Range(0, selectedThemes.Count)];
+        currentTheme = selectedThemes[Random.Range(1, selectedThemes.Count)];
         selectedThemes.Remove(currentTheme);
         currentDPK = events.DKP[GameUtility.ThemeNameText(currentTheme)];
         LoadData();
@@ -312,6 +322,10 @@ public class GameManager : MonoBehaviour {
         Display();
     }
 
+    IEnumerator ThemeDisplayWait(){
+         yield return new WaitForSeconds(GameUtility.ResolutionDelayTime);
+    }
+
     #endregion
 
     /// <summary>
@@ -373,7 +387,7 @@ public class GameManager : MonoBehaviour {
         var pkp = PlayerPrefs.GetInt(GameUtility.SavePKPKey);
         //if (pkp < events.CurrentFinalScore)
         //{
-        PlayerPrefs.SetInt(GameUtility.SavePKPKey, events.PKP);
+        PlayerPrefs.SetFloat(GameUtility.SavePKPKey, events.PKP);
         //}
     }
     /// <summary>
@@ -414,13 +428,17 @@ public class GameManager : MonoBehaviour {
     {
         events.DKP.Clear();
         events.DPKList.Clear();
+        events.DKP.Add ("Teste",0);
+        events.DKP.Add("Portugues", 100);//1
+        events.DKP.Add("Biologia", 100);//2
+        events.DKP.Add("Geografia", 100);//3
+        events.DKP.Add("Artes", 100);//4
+        events.DKP.Add("Matematica", 100);//5
+        events.DKP.Add("Filosofia", 100);//6
+        events.DKP.Add("Fisica", 100);//7
+        events.DKP.Add("Historia", 100);//8
+        events.DKP.Add("Sociologia", 100);//9
 
-        events.DKP.Add("Biologia", 100);
-        events.DKP.Add("Fisica", 100);
-        events.DKP.Add("Geografia", 100);
-        events.DKP.Add("Historia", 300);
-        events.DKP.Add("Matematica", 300);
-        events.DKP.Add("Portugues", 100);
 
         for (int i = 0; i < events.DKP.Count; i++)
         {
@@ -441,12 +459,13 @@ public class GameManager : MonoBehaviour {
     void UpdatePKP()
     {
         int total = 0;
-        for (int i = 0; i < events.DKP.Count; i++)
+        for (int i = 1; i < events.DKP.Count; i++)
         {
+            Debug.Log(GameUtility.ThemeNameText(i));
             total += events.DKP[GameUtility.ThemeNameText(i)];
         }
         Debug.Log(total);
-        int media = total / events.DKP.Count;
+        float media = total / 9;
         Debug.Log(media);
         events.PKP = media;
     }
