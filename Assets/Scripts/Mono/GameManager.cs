@@ -221,13 +221,16 @@ public class GameManager : MonoBehaviour {
         {
             correctAnswerStreak++;
             //UpdateScore(data.Questions[currentQuestion].AddScore);
-            int totalTime = data.Questions[currentQuestion].Timer;
-            int timeCoeficent = timeLeft / totalTime;
+            float totalTime = (float)data.Questions[currentQuestion].Timer;
+            float timeL = (float)timeLeft;
+            float timeCoeficent = (totalTime-(totalTime -timeL))/totalTime ;
+            Debug.Log("TC: "+timeCoeficent);
+            float scoreStreakvalue = events.baseScore * correctAnswerStreak;
+            float score = (timeCoeficent * scoreStreakvalue) +scoreStreakvalue;
 
-            int score = events.baseScore * correctAnswerStreak;
-            //Debug.Log("BaseScore: " + events.baseScore + "  " + "TimeCoeficent: "
-                //+ timeCoeficent + "  " + "CorrectAnswerStreak: " + correctAnswerStreak);
-            UpdateScore(currentTheme, score);
+            Debug.Log("BaseScore: " + events.baseScore + "  " + "TimeCoeficent: "
+                + timeCoeficent + "  " + " CorrectAnswerStreak: " + correctAnswerStreak + " FinalScore: "+score);
+            UpdateScore(currentTheme, (int)score);
         }
         else
         {
@@ -289,7 +292,7 @@ public class GameManager : MonoBehaviour {
                 IE_StartTimer = StartTimer();
                 StartCoroutine(IE_StartTimer);
 
-                timerAnimtor.SetInteger(timerStateParaHash, 2);
+                //timerAnimtor.SetInteger(timerStateParaHash, 2);
                 break;
             case false:
                 if (IE_StartTimer != null)

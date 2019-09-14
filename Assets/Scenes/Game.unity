@@ -152,10 +152,10 @@ RectTransform:
   m_Father: {fileID: 2037843485}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &15967070
 MonoBehaviour:
@@ -2235,15 +2235,15 @@ MonoBehaviour:
     finalBGColor: {r: 0.14901961, g: 0.5058824, b: 0.76470596, a: 1}
     themeSpritesDisplay:
     - {fileID: 0}
-    - {fileID: 21300000, guid: 68e21c812cba72745b0255cf1a872e6b, type: 3}
-    - {fileID: 21300000, guid: 95a39c1be5d81684084f7ccbc4d6d514, type: 3}
-    - {fileID: 21300000, guid: 6e990202fc8fc404db478a4d6b2371a5, type: 3}
-    - {fileID: 21300000, guid: 6cc6c69abadb27a42825720e90306187, type: 3}
-    - {fileID: 21300000, guid: 66605918bd3a3f142bc157a12f1959f4, type: 3}
-    - {fileID: 21300000, guid: 743458742497b3345a662cd02ca8439b, type: 3}
-    - {fileID: 21300000, guid: 6e71e90548c4273419b7d471b44e07d1, type: 3}
-    - {fileID: 21300000, guid: fffd38d132c5d2a49940c6816a1a0338, type: 3}
-    - {fileID: 21300000, guid: 5ce587d85d00cf6429f2f5d98942ffd9, type: 3}
+    - {fileID: 21300000, guid: 958687430fd50254eaf76ec96e235232, type: 3}
+    - {fileID: 21300000, guid: b5e0bbf62d4fe3f4d87a552a0b164601, type: 3}
+    - {fileID: 21300000, guid: 69767cda8d4b03a46a387109c2b10f7b, type: 3}
+    - {fileID: 21300000, guid: bef4c85df58b1564bab8bba136fd54fc, type: 3}
+    - {fileID: 21300000, guid: a0b65cfb1a829364696574b2ab7baadd, type: 3}
+    - {fileID: 21300000, guid: 99b868734a6883446a1b2af6ea658232, type: 3}
+    - {fileID: 21300000, guid: 3058da135c365574bbbc4ee7f4ebd010, type: 3}
+    - {fileID: 21300000, guid: 90897a965e8968941b94c2ec685647a5, type: 3}
+    - {fileID: 21300000, guid: 863950f488a63b641a244939adca2962, type: 3}
 --- !u!114 &849180835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4167,7 +4167,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037843484}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
