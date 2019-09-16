@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using System.IO;
 public class ThemeManager : MonoBehaviour
 {
     public List<int> themeList = new List<int>();
@@ -14,6 +14,7 @@ public class ThemeManager : MonoBehaviour
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        CopyFileIfNonexistent();
     }
 
     void Start(){
@@ -44,4 +45,25 @@ public class ThemeManager : MonoBehaviour
             SceneManager.LoadScene("Game");
     }
 
+    public void CopyFileIfNonexistent () {
+         string dataPath =  Path.Combine(Application.persistentDataPath, "/");
+
+        WriteOnPersistentDataPath(dataPath, "Artes_Easy.xml");
+        WriteOnPersistentDataPath(dataPath, "Matematica_Easy.xml");
+        WriteOnPersistentDataPath(dataPath, "Biologia_Easy.xml");
+        WriteOnPersistentDataPath(dataPath, "Filosofia_Easy.xml");
+        WriteOnPersistentDataPath(dataPath, "Fisica_Easy.xml");
+        WriteOnPersistentDataPath(dataPath, "Geografia_Easy.xml");
+        WriteOnPersistentDataPath(dataPath, "Historia_Easy.xml");
+        WriteOnPersistentDataPath(dataPath, "Portugues_Easy.xml");
+        WriteOnPersistentDataPath(dataPath, "Sociologia_Easy.xml");
+     }
+     void WriteOnPersistentDataPath(string dataPath, string file){
+        string assetPath = Path.Combine(GameUtility.FileDir,file);
+        string datapath2 = Path.Combine(dataPath,file);
+         //if(!File.Exists(dataPath+file)) {
+             // File doesn't exist, move it from assets folder to data directory
+        File.Copy(assetPath, datapath2);
+         //}
+     }
 }
