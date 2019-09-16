@@ -54,7 +54,7 @@
           <IsCorrect>false</IsCorrect>
         </Answer>
       </Answers>
-      <UseTimer>false</UseTimer>
+      <UseTimer>true</UseTimer>
       <Timer>10</Timer>
       <Type>Single</Type>
       <AddScore>0</AddScore>

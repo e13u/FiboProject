@@ -97,8 +97,9 @@ public class GameManager : MonoBehaviour {
         InitializeDPK();
         events.StartupHighscore = PlayerPrefs.GetInt(GameUtility.SavePKPKey);
         events.round = 1;
-        roundText.text = "Round: "+events.round.ToString();
+        events.currentQuestionThemeNumber = 1;
 
+        roundText.text = "round "+events.round.ToString();
         //timerDefaultColor = timerText.color;
 
         //timerStateParaHash = Animator.StringToHash("TimerState");
@@ -119,9 +120,24 @@ public class GameManager : MonoBehaviour {
         selectedThemes.Remove(currentTheme);
         currentDPK = events.DKP[GameUtility.ThemeNameText(currentTheme)];
         LoadData();
+    }
+
+    void LoadData()
+    {
+        //var path = Path.Combine(GameUtility.FileDir, GameUtility.FileName + events.round + ".xml
+        string dificulty = VerifyTierForThemeDificulty(currentDPK);
+
+        string themeFile = GameUtility.ThemeNameText(currentTheme) + "_" + dificulty.ToString() + ".xml";
+
+        themeText.text = themeFile;
+        Debug.Log("TEMA+DIFICULDADE:" + themeFile);
+        var path = Path.Combine(GameUtility.FileDir, themeFile);
+        data = Data.Fetch(path);
+        //IE_WaitTillNextRound = WaitTillNextRound();
+        //Corrotina chama o Display
         ThemeDisplay();
     }
-    
+
     void ThemeDisplay(){
         //events.UpdateQuestionUI(null);
         events.DisplayThemeScreen(currentTheme, 1);
@@ -130,25 +146,12 @@ public class GameManager : MonoBehaviour {
     IEnumerator ThemeDisplayWait(){
         yield return new WaitForSeconds(2);
         events.DisplayThemeScreen(currentTheme, 0);
-        StartCoroutine(IE_WaitTillNextRound);
+        //StartCoroutine(IE_WaitTillNextRound);
+        Display();
     }
     /// <summary>
     /// Function that is called to load data from the xml file.
     /// </summary>
-    void LoadData()
-    {
-        //var path = Path.Combine(GameUtility.FileDir, GameUtility.FileName + events.round + ".xml
-        string dificulty = VerifyTierForThemeDificulty(currentDPK);
-
-        string themeFile = GameUtility.ThemeNameText(currentTheme) +"_"+ dificulty.ToString() + ".xml";
-
-        themeText.text = themeFile;
-        Debug.Log("TEMA+DIFICULDADE:" + themeFile);
-        var path = Path.Combine(GameUtility.FileDir, themeFile);
-        data = Data.Fetch(path);
-        IE_WaitTillNextRound = WaitTillNextRound();
-        //Corrotina chama o Display
-    }
 
     /// <summary>
     /// Function that is called to update new selected answer.
@@ -224,7 +227,6 @@ public class GameManager : MonoBehaviour {
             float totalTime = (float)data.Questions[currentQuestion].Timer;
             float timeL = (float)timeLeft;
             float timeCoeficent = (totalTime-(totalTime -timeL))/totalTime ;
-            Debug.Log("TC: "+timeCoeficent);
             float scoreStreakvalue = events.baseScore * correctAnswerStreak;
             float score = (timeCoeficent * scoreStreakvalue) +scoreStreakvalue;
 
@@ -249,7 +251,7 @@ public class GameManager : MonoBehaviour {
             FinishedQuestions.Clear();
             events.currentQuestionThemeNumber = 1;
             events.round ++;
-            roundText.text = "Round: " + events.round.ToString();
+            roundText.text = "round " + events.round.ToString();
 
 
             if (IsFinished)
@@ -258,7 +260,7 @@ public class GameManager : MonoBehaviour {
             }
             else
             {
-                SortTheme();
+                StartCoroutine("ThemeDelay");
             }
         }
         else{
@@ -304,6 +306,12 @@ public class GameManager : MonoBehaviour {
                 break;
         }
     }
+
+    IEnumerator ThemeDelay()
+    {
+        yield return new WaitForSeconds(GameUtility.ResolutionDelayTime);
+        SortTheme();
+    }
     IEnumerator StartTimer()
     {
         var totalTime = data.Questions[currentQuestion].Timer;
@@ -333,6 +341,7 @@ public class GameManager : MonoBehaviour {
     IEnumerator WaitTillNextRound()
     {
         yield return new WaitForSeconds(GameUtility.ResolutionDelayTime);
+        //yield return new WaitForSeconds(0);
         Display();
     }
 
@@ -373,9 +382,8 @@ public class GameManager : MonoBehaviour {
     public void RestartGame()
     {
         //If next level is the first level, meaning that we start playing a game again, reset the final score.
-        if (events.round == 1) { events.CurrentFinalScore = 0; }
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //if (events.round == 1) { events.CurrentFinalScore = 0; }        
+        SceneManager.LoadScene(0);
     }
     /// <summary>
     /// Function that is called to quit the application.

@@ -22,6 +22,9 @@ public class GameEvents : ScriptableObject {
     public delegate void    DisplayThemeScreenCallback(int themeId, float alphaPanel);
     public                  DisplayThemeScreenCallback     DisplayThemeScreen =null;
 
+    public delegate void DisplayThemeAfterResolutionCallback();
+    public DisplayThemeAfterResolutionCallback DisplayAfterResolution = null;
+
     public int baseScore = 50;
     [Space]
     public                  int                                 round                           = 1;

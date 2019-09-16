@@ -20,8 +20,8 @@ public struct UIManagerParameters
     [SerializeField] Color finalBGColor;
     public Color FinalBGColor { get { return finalBGColor; } }
 
-     [Header("Theme Screen Options")]
-    public List<Sprite> themeSpritesDisplay;
+    [Header("Theme Screen Options")]
+    public List<GameObject> themePanelDisplay;
 }
 [Serializable()]
 public struct UIElements
@@ -99,6 +99,7 @@ public class UIManager : MonoBehaviour {
         events.DisplayResolutionScreen  += DisplayResolution;
         events.ScoreUpdated             += UpdateScoreUI;
         events.DisplayThemeScreen       += DisplayThemeScreen;
+        //events.DisplayAfterResolution   += 
     }
     /// <summary>
     /// Function that is called when the behaviour becomes disabled
@@ -118,13 +119,20 @@ public class UIManager : MonoBehaviour {
     {
         UpdateScoreUI();
         resStateParaHash = Animator.StringToHash("ScreenState");
+        uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().interactable = false;
+        uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
     #endregion
      void DisplayThemeScreen(int themeId, float alphaPanel){
-        uIElements.ThemeUIDisplay.transform.Find("ThemeImage").GetComponent<Image>().sprite = parameters.themeSpritesDisplay[themeId];
         uIElements.ThemeUIDisplay.GetComponent<CanvasGroup>().alpha = alphaPanel;
-     }
+        if(alphaPanel > 0)
+            parameters.themePanelDisplay[themeId].gameObject.SetActive(true);
+        else
+        {
+            parameters.themePanelDisplay[themeId].gameObject.SetActive(false);
+        }
+    }
 
     /// <summary>
     /// Function that is used to update new question UI information.
@@ -157,9 +165,11 @@ public class UIManager : MonoBehaviour {
     IEnumerator DisplayTimedResolution()
     {
         yield return new WaitForSeconds(GameUtility.ResolutionDelayTime);
-        uIElements.ResolutionScreenAnimator.SetInteger(resStateParaHash, 1);
+        //uIElements.ResolutionScreenAnimator.SetInteger(resStateParaHash, 1);
         uIElements.MainCanvasGroup.blocksRaycasts = true;
         uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().alpha = 0;
+
+        //
     }
 
     /// <summary>
@@ -168,7 +178,7 @@ public class UIManager : MonoBehaviour {
     void UpdateResUI(ResolutionScreenType type, int score)
     {
         //var highscore = PlayerPrefs.GetInt(GameUtility.SavePKPKey);
-        var highscore = events.PKP;
+        //var highscore = events.PKP;
         
         switch (type)
         {
@@ -183,17 +193,31 @@ public class UIManager : MonoBehaviour {
                 uIElements.ResolutionScoreText.text = "-" + score;
                 break;
             case ResolutionScreenType.Finish:
-                uIElements.ResolutionBG.color = parameters.FinalBGColor;
-                uIElements.ResolutionStateInfoText.text = "FINAL SCORE";
-
-                StartCoroutine(CalculateScore());
-                uIElements.FinishUIElements.gameObject.SetActive(true);
-                uIElements.HighScoreText.gameObject.SetActive(true);
-                uIElements.HighScoreText.text = "PKP: " + highscore;
+                //uIElements.ResolutionBG.color = parameters.FinalBGColor;
+                //uIElements.ResolutionStateInfoText.text = "FINAL SCORE";
+                //uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().interactable = true;
+                //uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().blocksRaycasts = true;
+                //StartCoroutine(CalculateScore());
+                //uIElements.FinishUIElements.gameObject.SetActive(true);
+                //uIElements.HighScoreText.gameObject.SetActive(true);
+                //uIElements.HighScoreText.text = "PKP: " + highscore;
+                StartCoroutine("DelayFinishResolution");
                 break;
         }
     }
 
+    IEnumerator DelayFinishResolution()
+    {
+        yield return new WaitForSeconds(GameUtility.ResolutionDelayTime);
+        uIElements.ResolutionBG.color = parameters.FinalBGColor;
+        uIElements.ResolutionStateInfoText.text = "FINAL SCORE";
+        uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().interactable = true;
+        uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        StartCoroutine(CalculateScore());
+        uIElements.FinishUIElements.gameObject.SetActive(true);
+        uIElements.HighScoreText.gameObject.SetActive(true);
+        uIElements.HighScoreText.text = "PKP: " + events.PKP;
+    }
     /// <summary>
     /// Function that is used to calculate and display the score.
     /// </summary>
