@@ -14,7 +14,7 @@ public class GameUtility {
     {
         get
         {
-            return Application.dataPath + "/Resources/";
+            return Application.persistentDataPath + "/";
         }
     }
 

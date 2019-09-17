@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<Data xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Questions>
+    <Question>
+      <Info>Qual a classe gramatical da palavra: Tu</Info>
+      <Answers>
+        <Answer>
+          <Info>Substantivo</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Verbo</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Pronome</Info>
+          <IsCorrect>true</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Adjetivo</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Advérbio</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+      </Answers>
+      <UseTimer>true</UseTimer>
+      <Timer>10</Timer>
+      <Type>Single</Type>
+      <AddScore>0</AddScore>
+    </Question>
+    <Question>
+      <Info>Qual a classe gramatical da palavra: Programar</Info>
+      <Answers>
+        <Answer>
+          <Info>Substantivo</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Verbo</Info>
+          <IsCorrect>true</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Pronome</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Adjetivo</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Advérbio</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+      </Answers>
+      <UseTimer>true</UseTimer>
+      <Timer>10</Timer>
+      <Type>Single</Type>
+      <AddScore>0</AddScore>
+    </Question>
+    <Question>
+      <Info>Em qual das formas de porquês se usa no fim de frases?</Info>
+      <Answers>
+        <Answer>
+          <Info>por que</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>porque</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>por quê</Info>
+          <IsCorrect>true</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>porquê</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Porquê</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+      </Answers>
+      <UseTimer>true</UseTimer>
+      <Timer>10</Timer>
+      <Type>Single</Type>
+      <AddScore>0</AddScore>
+    </Question>
+    <Question>
+      <Info>A Primeira Geração da literatura romântica no Brasil foi marcada pelo:</Info>
+      <Answers>
+        <Answer>
+          <Info>Crítica Social</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Religiosidade</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Obscuridade</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Nacionalismo</Info>
+          <IsCorrect>true</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Métrica perfeita</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+      </Answers>
+      <UseTimer>true</UseTimer>
+      <Timer>10</Timer>
+      <Type>Single</Type>
+      <AddScore>0</AddScore>
+    </Question>
+    <Question>
+      <Info>Qual desses escritores foi um dos fundadores da Academia Brasileira de Letras</Info>
+      <Answers>
+        <Answer>
+          <Info>Olavo Bilac</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Aluísio Azevedo</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Gonçalves Dias</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Machado de Assis</Info>
+          <IsCorrect>true</IsCorrect>
+        </Answer>
+        <Answer>
+          <Info>Carlos Drummond de Andrade</Info>
+          <IsCorrect>false</IsCorrect>
+        </Answer>
+      </Answers>
+      <UseTimer>true</UseTimer>
+      <Timer>10</Timer>
+      <Type>Single</Type>
+      <AddScore>0</AddScore>
+    </Question>
+  </Questions>
+</Data>
