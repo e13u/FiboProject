@@ -137,7 +137,7 @@ public class UIManager : MonoBehaviour {
     /// <summary>
     /// Function that is used to update new question UI information.
     /// </summary>
-    void UpdateQuestionUI(Question question)
+    void UpdateQuestionUI(Question2 question)
     {
         uIElements.QuestionInfoTextObject.text = question.Info;
         CreateAnswers(question);
@@ -239,7 +239,7 @@ public class UIManager : MonoBehaviour {
     /// <summary>
     /// Function that is used to create new question answers.
     /// </summary>
-    void CreateAnswers(Question question)
+    void CreateAnswers(Question2 question)
     {
         EraseAnswers();
 

@@ -10,6 +10,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
     #region Variables
+    private             Question2[]          _questions              = null;
+    public              Question2[]          Questions               { get { return _questions; } }
 
     private             Data                data                    = new Data();
 
@@ -119,7 +121,8 @@ public class GameManager : MonoBehaviour {
         currentTheme = selectedThemes[Random.Range(1, selectedThemes.Count)];
         selectedThemes.Remove(currentTheme);
         currentDPK = events.DKP[GameUtility.ThemeNameText(currentTheme)];
-        LoadData();
+        //LoadData();
+        LoadQuestions();
     }
 
     void LoadData()
@@ -135,6 +138,21 @@ public class GameManager : MonoBehaviour {
         data = Data.Fetch(path);
         //IE_WaitTillNextRound = WaitTillNextRound();
         //Corrotina chama o Display
+        ThemeDisplay();
+    }
+
+    void LoadQuestions()
+    {
+         string dificulty = VerifyTierForThemeDificulty(currentDPK);
+
+        string themeFolder = GameUtility.ThemeNameText(currentTheme) + "_" + dificulty;
+
+        Object[] objs = Resources.LoadAll(themeFolder, typeof(Question2));
+        _questions = new Question2[objs.Length];
+        for (int i = 0; i < objs.Length; i++)
+        {
+            _questions[i] = (Question2)objs[i];
+        }
         ThemeDisplay();
     }
 
@@ -158,7 +176,8 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public void UpdateAnswers(AnswerData newAnswer)
     {
-        if (data.Questions[currentQuestion].Type == AnswerType.Single)
+        // if (data.Questions[currentQuestion].Type == AnswerType.Single)
+        if (Questions[currentQuestion].GetAnswerType == Question2.AnswerType2.Single)
         {
             foreach (var answer in PickedAnswers)
             {
@@ -224,7 +243,8 @@ public class GameManager : MonoBehaviour {
         {
             correctAnswerStreak++;
             //UpdateScore(data.Questions[currentQuestion].AddScore);
-            float totalTime = (float)data.Questions[currentQuestion].Timer;
+            //float totalTime = (float)data.Questions[currentQuestion].Timer;
+            float totalTime = (float)Questions[currentQuestion].Timer;
             float timeL = (float)timeLeft;
             float timeCoeficent = (totalTime-(totalTime -timeL))/totalTime ;
             float scoreStreakvalue = events.baseScore * correctAnswerStreak;
@@ -279,7 +299,8 @@ public class GameManager : MonoBehaviour {
             : (isCorrect) ? UIManager.ResolutionScreenType.Correct
             : UIManager.ResolutionScreenType.Incorrect;
 
-        events.DisplayResolutionScreen?.Invoke(type, data.Questions[currentQuestion].AddScore);
+        // events.DisplayResolutionScreen?.Invoke(type, data.Questions[currentQuestion].AddScore);
+        events.DisplayResolutionScreen?.Invoke(type, Questions[currentQuestion].AddScore);
 
         AudioManager.Instance.PlaySound((isCorrect) ? "CorrectSFX" : "IncorrectSFX");
     }
@@ -314,7 +335,8 @@ public class GameManager : MonoBehaviour {
     }
     IEnumerator StartTimer()
     {
-        var totalTime = data.Questions[currentQuestion].Timer;
+        //var totalTime = data.Questions[currentQuestion].Timer;
+        var totalTime = Questions[currentQuestion].Timer;
         timeLeft = totalTime;
 
         timerText.color = timerDefaultColor;
@@ -365,7 +387,8 @@ public class GameManager : MonoBehaviour {
     {
         if (PickedAnswers.Count > 0)
         {
-            List<int> c = data.Questions[currentQuestion].GetCorrectAnswers();
+            // List<int> c = data.Questions[currentQuestion].GetCorrectAnswers();
+            List<int> c = Questions[currentQuestion].GetCorrectAnswers();
             List<int> p = PickedAnswers.Select(x => x.AnswerIndex).ToList();
 
             var f = c.Except(p).ToList();
@@ -420,21 +443,25 @@ public class GameManager : MonoBehaviour {
 
     #region Getters
 
-    Question GetRandomQuestion()
+    Question2 GetRandomQuestion()
     {
         var randomIndex = GetRandomQuestionIndex();
         currentQuestion = randomIndex;
 
-        return data.Questions[currentQuestion];
+        // return data.Questions[currentQuestion];
+        return Questions[currentQuestion];
     }
+    
     int GetRandomQuestionIndex()
     {
         var random = 0;
-        if (FinishedQuestions.Count < data.Questions.Length)
+        // if (FinishedQuestions.Count < data.Questions.Length)
+        if (FinishedQuestions.Count < Questions.Length)
         {
             do
             {
-                random = UnityEngine.Random.Range(0, data.Questions.Length);
+                // random = UnityEngine.Random.Range(0, data.Questions.Length);
+                random = UnityEngine.Random.Range(0, Questions.Length);
             } while (FinishedQuestions.Contains(random) || random == currentQuestion);
         }
         return random;

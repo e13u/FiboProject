@@ -11,14 +11,14 @@ public class AplicationManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        CopyQuestionToMobile("Artes_Easy.xml");
-        CopyQuestionToMobile("Biologia_Easy.xml");
-        CopyQuestionToMobile("Portugues_Easy.xml");
-        CopyQuestionToMobile("Fisica_Easy.xml");
-        CopyQuestionToMobile("Sociologia_Easy.xml");
-        CopyQuestionToMobile("Matematica_Easy.xml");
-        CopyQuestionToMobile("Filosofia_Easy.xml");
-        CopyQuestionToMobile("Geografia_Easy.xml");
+        // CopyQuestionToMobile("Artes_Easy.xml");
+        // CopyQuestionToMobile("Biologia_Easy.xml");
+        // CopyQuestionToMobile("Portugues_Easy.xml");
+        // CopyQuestionToMobile("Fisica_Easy.xml");
+        // CopyQuestionToMobile("Sociologia_Easy.xml");
+        // CopyQuestionToMobile("Matematica_Easy.xml");
+        // CopyQuestionToMobile("Filosofia_Easy.xml");
+        // CopyQuestionToMobile("Geografia_Easy.xml");
 
         //File.Copy(Application.streamingAssetsPath+"/Artes_Easy.xml", Application.persistentDataPath+"/Artes_Easy.xml");
     }

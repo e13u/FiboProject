@@ -78,6 +78,7 @@ public class GameUtility {
 public class Data
 {
     public Question[] Questions = new Question[0];
+    public Question2[] Questions2 = new Question2[0];
 
     public Data () { }
 

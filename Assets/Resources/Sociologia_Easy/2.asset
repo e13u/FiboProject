@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f218be9518d33904abcd2331a665e74d, type: 3}
+  m_Name: 2
+  m_EditorClassIdentifier: 
+  _info: "Qual \xE9 o principal problema do sistema capitalista, segundo Marx?"
+  _answers:
+  - _info: "Materialismo hist\xF3rico  "
+    _isCorrect: 0
+  - _info: "Materialismo dial\xE9tico"
+    _isCorrect: 0
+  - _info: "A explora\xE7\xE3o do homem pelo homem"
+    _isCorrect: 1
+  - _info: "O ac\xFAmulo do capital"
+    _isCorrect: 0
+  - _info: A pobreza
+    _isCorrect: 0
+  _useTimer: 1
+  _timer: 10
+  _answerType: 1
+  _addScore: 10

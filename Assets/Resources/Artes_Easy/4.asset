@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f218be9518d33904abcd2331a665e74d, type: 3}
+  m_Name: 4
+  m_EditorClassIdentifier: 
+  _info: "A obra Guernica que retrata a Guerra civil espanhola de 1937 \xE9 do pintor..."
+  _answers:
+  - _info: "Joan Mir\xF3"
+    _isCorrect: 0
+  - _info: "Salvador Dal\xED"
+    _isCorrect: 0
+  - _info: "Ren\xE9 Magritte"
+    _isCorrect: 0
+  - _info: Frida Kahlo
+    _isCorrect: 0
+  - _info: Pablo Picasso
+    _isCorrect: 1
+  _useTimer: 1
+  _timer: 10
+  _answerType: 1
+  _addScore: 10
