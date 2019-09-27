@@ -22,6 +22,8 @@ public struct UIManagerParameters
 
     [Header("Theme Screen Options")]
     public List<GameObject> themePanelDisplay;
+
+    public List<Sprite> themeStarsScreen;
 }
 [Serializable()]
 public struct UIElements
@@ -145,9 +147,9 @@ public class UIManager : MonoBehaviour {
     /// <summary>
     /// Function that is used to display resolution screen.
     /// </summary>
-    void DisplayResolution(ResolutionScreenType type, int score)
+    void DisplayResolution(ResolutionScreenType type, int score, int themeID)
     {
-        UpdateResUI(type, score);
+        UpdateResUI(type, score, themeID);
         uIElements.ResolutionScreenAnimator.SetInteger(resStateParaHash, 2);
         uIElements.MainCanvasGroup.blocksRaycasts = false;
         uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().alpha = 1;
@@ -175,11 +177,11 @@ public class UIManager : MonoBehaviour {
     /// <summary>
     /// Function that is used to display resolution UI information.
     /// </summary>
-    void UpdateResUI(ResolutionScreenType type, int score)
+    void UpdateResUI(ResolutionScreenType type, int score, int themeID)
     {
         //var highscore = PlayerPrefs.GetInt(GameUtility.SavePKPKey);
         //var highscore = events.PKP;
-        
+        uIElements.ResolutionBG.sprite = parameters.themeStarsScreen[themeID];
         switch (type)
         {
             case ResolutionScreenType.Correct:

@@ -37,6 +37,18 @@ public class GameManager : MonoBehaviour {
     public List<int> selectedThemes = new List<int>();
     private int currentTheme = 0;
 
+    public List<List<bool>> themeAnswersList = new List<List<bool>>();
+
+    public List<bool> por_Aswers = new List<bool>();
+    public List<bool> bio_Aswers = new List<bool>();
+    public List<bool> geo_Aswers = new List<bool>();
+    public List<bool> art_Aswers = new List<bool>();
+    public List<bool> mat_Aswers = new List<bool>();
+    public List<bool> fil_Aswers = new List<bool>();
+    public List<bool> fis_Aswers = new List<bool>();
+    public List<bool> his_Aswers = new List<bool>();
+    public List<bool> soc_Aswers = new List<bool>();
+
     //temp  
     public Text themeText;
     public Text roundText;
@@ -97,6 +109,7 @@ public class GameManager : MonoBehaviour {
     private void Start()
     {
         InitializeDPK();
+        InitializeThemeAnswersList();
         events.StartupHighscore = PlayerPrefs.GetInt(GameUtility.SavePKPKey);
         events.round = 1;
         events.currentQuestionThemeNumber = 1;
@@ -253,6 +266,7 @@ public class GameManager : MonoBehaviour {
             Debug.Log("BaseScore: " + events.baseScore + "  " + "TimeCoeficent: "
                 + timeCoeficent + "  " + " CorrectAnswerStreak: " + correctAnswerStreak + " FinalScore: "+score);
             UpdateScore(currentTheme, (int)score);
+            themeAnswersList[currentTheme - 1].Add(true);
         }
         else
         {
@@ -263,6 +277,7 @@ public class GameManager : MonoBehaviour {
             //UpdateScore(-data.Questions[currentQuestion].AddScore);
             int score = (correctAnswerStreak-1) * 10;
             UpdateScore(currentTheme, score);
+            themeAnswersList[currentTheme - 1].Add(false);
         }
 
         events.currentQuestionThemeNumber++;
@@ -300,7 +315,7 @@ public class GameManager : MonoBehaviour {
             : UIManager.ResolutionScreenType.Incorrect;
 
         // events.DisplayResolutionScreen?.Invoke(type, data.Questions[currentQuestion].AddScore);
-        events.DisplayResolutionScreen?.Invoke(type, Questions[currentQuestion].AddScore);
+        events.DisplayResolutionScreen?.Invoke(type, Questions[currentQuestion].AddScore, currentTheme);
 
         AudioManager.Instance.PlaySound((isCorrect) ? "CorrectSFX" : "IncorrectSFX");
     }
@@ -514,6 +529,7 @@ public class GameManager : MonoBehaviour {
         Debug.Log(media);
         events.PKP = media;
     }
+    #endregion
 
     string VerifyTierForThemeDificulty(int tier)
     {
@@ -524,6 +540,17 @@ public class GameManager : MonoBehaviour {
         else
             return "Hard";
     }
-    #endregion
 
+    void InitializeThemeAnswersList()
+    {
+        themeAnswersList.Add(por_Aswers);
+        themeAnswersList.Add(bio_Aswers);
+        themeAnswersList.Add(geo_Aswers);
+        themeAnswersList.Add(art_Aswers);
+        themeAnswersList.Add(mat_Aswers);
+        themeAnswersList.Add(fil_Aswers);
+        themeAnswersList.Add(fis_Aswers);
+        themeAnswersList.Add(his_Aswers);
+        themeAnswersList.Add(soc_Aswers);
+    }
 }

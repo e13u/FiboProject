@@ -5306,6 +5306,17 @@ MonoBehaviour:
     - {fileID: 1742709507}
     - {fileID: 1467467074}
     - {fileID: 1893884637}
+    themeStarsScreen:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 21300000, guid: 4f15094c29ba5834ea6aa193a7657198, type: 3}
+    - {fileID: 21300000, guid: ecb832fe41126d14ab4b194cb0b084db, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 21300000, guid: e9fa09f468b72d84e84ec3aa3b2308e5, type: 3}
+    - {fileID: 21300000, guid: d4cca032e2a92134eb2db668db1432ed, type: 3}
+    - {fileID: 21300000, guid: 94a7c5d8af612c741bb829a52c668caa, type: 3}
+    - {fileID: 0}
 --- !u!114 &849180835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5323,8 +5334,17 @@ MonoBehaviour:
   timerText: {fileID: 2092137027}
   timerHalfWayOutColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   timerAlmostOutColor: {r: 1, g: 0, b: 0, a: 1}
-  FinishedQuestions: 
+  FinishedQuestions: 000000000000000000000000
   selectedThemes: 
+  por_Aswers: 
+  bio_Aswers: 
+  geo_Aswers: 
+  art_Aswers: 
+  mat_Aswers: 
+  fil_Aswers: 
+  fis_Aswers: 
+  his_Aswers: 
+  soc_Aswers: 
   themeText: {fileID: 380113179}
   roundText: {fileID: 1553220524}
 --- !u!1 &878518678
