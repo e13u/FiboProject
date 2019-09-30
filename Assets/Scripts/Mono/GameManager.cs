@@ -177,6 +177,7 @@ public class GameManager : MonoBehaviour {
     IEnumerator ThemeDisplayWait(){
         yield return new WaitForSeconds(2);
         events.DisplayThemeScreen(currentTheme, 0);
+        events.ResetResolutionUI();
         //StartCoroutine(IE_WaitTillNextRound);
         Display();
     }
@@ -315,7 +316,7 @@ public class GameManager : MonoBehaviour {
             : UIManager.ResolutionScreenType.Incorrect;
 
         // events.DisplayResolutionScreen?.Invoke(type, data.Questions[currentQuestion].AddScore);
-        events.DisplayResolutionScreen?.Invoke(type, Questions[currentQuestion].AddScore, currentTheme);
+        events.DisplayResolutionScreen?.Invoke(type, Questions[currentQuestion].AddScore, currentTheme, themeAnswersList[currentTheme - 1]);
 
         AudioManager.Instance.PlaySound((isCorrect) ? "CorrectSFX" : "IncorrectSFX");
     }

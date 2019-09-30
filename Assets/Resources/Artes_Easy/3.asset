@@ -22,9 +22,8 @@ MonoBehaviour:
     _isCorrect: 0
   - _info: Fauvismo
     _isCorrect: 0
-  - _info: Barroco
-    _isCorrect: 0
   _useTimer: 1
   _timer: 10
   _answerType: 1
   _addScore: 10
+  _questionImage: {fileID: 21300000, guid: 5f3b5ea545f48e34893737c8bdc62064, type: 3}

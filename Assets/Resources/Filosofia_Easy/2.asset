@@ -22,8 +22,6 @@ MonoBehaviour:
     _isCorrect: 0
   - _info: Tales de Mileto
     _isCorrect: 1
-  - _info: "Pit\xE1goras"
-    _isCorrect: 0
   _useTimer: 1
   _timer: 10
   _answerType: 1

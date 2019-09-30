@@ -20,8 +20,6 @@ MonoBehaviour:
     _isCorrect: 0
   - _info: "Ret\xF3rica"
     _isCorrect: 0
-  - _info: Artes
-    _isCorrect: 0
   - _info: Nenhuma das anteriores
     _isCorrect: 1
   _useTimer: 1

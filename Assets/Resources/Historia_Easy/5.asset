@@ -16,13 +16,11 @@ MonoBehaviour:
   _answers:
   - _info: "Caf\xE9 Filho"
     _isCorrect: 0
-  - _info: Humberto Castelo Branco
+  - _info: Juscelino Kubitschek
     _isCorrect: 0
   - _info: "Jo\xE3o Goulart"
     _isCorrect: 1
   - _info: "J\xE2nio Quadros"
-    _isCorrect: 0
-  - _info: Juscelino Kubitschek
     _isCorrect: 0
   _useTimer: 1
   _timer: 10

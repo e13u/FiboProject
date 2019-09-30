@@ -12,18 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f218be9518d33904abcd2331a665e74d, type: 3}
   m_Name: 5
   m_EditorClassIdentifier: 
-  _info: "Arist\xF3teles foi professor de qual grande conquistador"
+  _info: "A sociologia cobre todas as \xE1reas do conv\xEDvio:"
   _answers:
-  - _info: Gengis Khan
+  - _info: "psicol\xF3gico"
     _isCorrect: 0
-  - _info: Alexandre, o Grande
+  - _info: "pol\xEDtico"
+    _isCorrect: 0
+  - _info: familiar
+    _isCorrect: 0
+  - _info: humano
     _isCorrect: 1
-  - _info: "Cle\xF3patra"
-    _isCorrect: 0
-  - _info: "Julio C\xE9sar"
-    _isCorrect: 0
-  - _info: Carlos Magno
-    _isCorrect: 0
   _useTimer: 1
   _timer: 10
   _answerType: 1

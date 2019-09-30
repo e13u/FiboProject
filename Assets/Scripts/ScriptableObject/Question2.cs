@@ -36,6 +36,9 @@ public class Question2 : ScriptableObject {
     [SerializeField] private    int         _addScore       = 10;
     public                      int         AddScore        { get { return _addScore; } }
 
+    [SerializeField] private    Sprite      _questionImage;
+    public                      Sprite      QuestionImage{ get { return _questionImage; } }
+
     /// <summary>
     /// Function that is called to collect and return correct answers indexes.
     /// </summary>

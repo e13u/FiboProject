@@ -20,8 +20,6 @@ MonoBehaviour:
     _isCorrect: 0
   - _info: vivo
     _isCorrect: 0
-  - _info: fico
-    _isCorrect: 0
   - _info: desisto
     _isCorrect: 0
   _useTimer: 1

@@ -23,7 +23,12 @@ public struct UIManagerParameters
     [Header("Theme Screen Options")]
     public List<GameObject> themePanelDisplay;
 
-    public List<Sprite> themeStarsScreen;
+    public List<Sprite> themeStarsScreen;    
+    public Sprite correctAnswersStar;
+    public Sprite incorrectAnswersStar;
+    public Sprite notAnsweredStar;
+
+
 }
 [Serializable()]
 public struct UIElements
@@ -33,6 +38,9 @@ public struct UIElements
 
     [SerializeField] TextMeshProUGUI questionInfoTextObject;
     public TextMeshProUGUI QuestionInfoTextObject { get { return questionInfoTextObject; } }
+
+    [SerializeField] Image questionImageObject;
+    public Image QuestionImageObject { get { return questionImageObject; } }
 
     [SerializeField] TextMeshProUGUI scoreText;
     public TextMeshProUGUI ScoreText { get { return scoreText; } }
@@ -65,6 +73,8 @@ public struct UIElements
     [Space]
      [SerializeField] RectTransform themeUIDisplay;
     public RectTransform ThemeUIDisplay {get {return themeUIDisplay;}}
+    public List<Image> answersStars;
+
 }
 public class UIManager : MonoBehaviour {
 
@@ -101,7 +111,7 @@ public class UIManager : MonoBehaviour {
         events.DisplayResolutionScreen  += DisplayResolution;
         events.ScoreUpdated             += UpdateScoreUI;
         events.DisplayThemeScreen       += DisplayThemeScreen;
-        //events.DisplayAfterResolution   += 
+        events.ResetResolutionUI        += ResetResolutionUI;
     }
     /// <summary>
     /// Function that is called when the behaviour becomes disabled
@@ -112,6 +122,7 @@ public class UIManager : MonoBehaviour {
         events.DisplayResolutionScreen  -= DisplayResolution;
         events.ScoreUpdated             -= UpdateScoreUI;
         events.DisplayThemeScreen       -= DisplayThemeScreen;
+        events.ResetResolutionUI        -= ResetResolutionUI;
     }
 
     /// <summary>
@@ -142,14 +153,25 @@ public class UIManager : MonoBehaviour {
     void UpdateQuestionUI(Question2 question)
     {
         uIElements.QuestionInfoTextObject.text = question.Info;
+        if(question.QuestionImage != null){
+            uIElements.QuestionImageObject.enabled = true;
+            uIElements.QuestionImageObject.sprite = question.QuestionImage;
+            uIElements.QuestionInfoTextObject.rectTransform.sizeDelta = 
+            new Vector3(uIElements.QuestionInfoTextObject.rectTransform.sizeDelta.x, 200,0);
+        }   
+        else{
+            uIElements.QuestionImageObject.enabled = false;
+            uIElements.QuestionInfoTextObject.rectTransform.sizeDelta = 
+            new Vector3(uIElements.QuestionInfoTextObject.rectTransform.sizeDelta.x, 490,0);
+        }
         CreateAnswers(question);
     }
     /// <summary>
     /// Function that is used to display resolution screen.
     /// </summary>
-    void DisplayResolution(ResolutionScreenType type, int score, int themeID)
+    void DisplayResolution(ResolutionScreenType type, int score, int themeID, List<bool> answers)
     {
-        UpdateResUI(type, score, themeID);
+        UpdateResUI(type, score, themeID, answers);
         uIElements.ResolutionScreenAnimator.SetInteger(resStateParaHash, 2);
         uIElements.MainCanvasGroup.blocksRaycasts = false;
         uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().alpha = 1;
@@ -177,11 +199,12 @@ public class UIManager : MonoBehaviour {
     /// <summary>
     /// Function that is used to display resolution UI information.
     /// </summary>
-    void UpdateResUI(ResolutionScreenType type, int score, int themeID)
+    void UpdateResUI(ResolutionScreenType type, int score, int themeID, List<bool> answers)
     {
         //var highscore = PlayerPrefs.GetInt(GameUtility.SavePKPKey);
         //var highscore = events.PKP;
         uIElements.ResolutionBG.sprite = parameters.themeStarsScreen[themeID];
+
         switch (type)
         {
             case ResolutionScreenType.Correct:
@@ -206,8 +229,32 @@ public class UIManager : MonoBehaviour {
                 StartCoroutine("DelayFinishResolution");
                 break;
         }
+        for (int i = 0; i < answers.Count; i++)
+        {
+            if(answers[i] == true) {
+                uIElements.answersStars[i].sprite = parameters.correctAnswersStar;
+                uIElements.answersStars[i].color = parameters.CorrectBGColor;
+            }               
+            else if(answers[i] == false){
+                uIElements.answersStars[i].sprite = parameters.incorrectAnswersStar;
+                uIElements.answersStars[i].color = parameters.IncorrectBGColor;
+            }
+            else{
+                uIElements.answersStars[i].sprite = parameters.notAnsweredStar;
+            }
+        }
     }
+    void ResetResolutionUI(){
+        uIElements.answersStars[0].sprite = parameters.notAnsweredStar;
+        uIElements.answersStars[0].color = Color.white;
 
+        uIElements.answersStars[1].sprite = parameters.notAnsweredStar;
+        uIElements.answersStars[1].color = Color.white;
+
+        uIElements.answersStars[2].sprite = parameters.notAnsweredStar;
+        uIElements.answersStars[2].color = Color.white;
+
+    }
     IEnumerator DelayFinishResolution()
     {
         yield return new WaitForSeconds(GameUtility.ResolutionDelayTime);

@@ -18,12 +18,10 @@ MonoBehaviour:
     _isCorrect: 0
   - _info: "Embri\xF3fitas"
     _isCorrect: 0
-  - _info: Hermafroditas
-    _isCorrect: 0
-  - _info: Angiospermas
-    _isCorrect: 0
   - _info: Gimnospermas
     _isCorrect: 1
+  - _info: Angiospermas
+    _isCorrect: 0
   _useTimer: 1
   _timer: 10
   _answerType: 1

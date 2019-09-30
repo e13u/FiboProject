@@ -23,8 +23,6 @@ MonoBehaviour:
     _isCorrect: 1
   - _info: 70 Km/h
     _isCorrect: 0
-  - _info: 80 Km/h
-    _isCorrect: 0
   _useTimer: 1
   _timer: 10
   _answerType: 1

@@ -20,8 +20,6 @@ MonoBehaviour:
     _isCorrect: 1
   - _info: "Bar\xE3o de Mau\xE1"
     _isCorrect: 0
-  - _info: Jango
-    _isCorrect: 0
   - _info: Aleijadinho
     _isCorrect: 0
   _useTimer: 1

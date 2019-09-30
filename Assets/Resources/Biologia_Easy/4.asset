@@ -14,16 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _info: Quais seres vivos surgiram primeiro na Terra?
   _answers:
-  - _info: "Bact\xE9rias"
-    _isCorrect: 0
+  - _info: "Protozo\xE1rios"
+    _isCorrect: 1
   - _info: Peixes
     _isCorrect: 0
   - _info: Algas
     _isCorrect: 0
   - _info: Dinossauros
     _isCorrect: 0
-  - _info: "Protozo\xE1rios"
-    _isCorrect: 1
   _useTimer: 1
   _timer: 10
   _answerType: 1

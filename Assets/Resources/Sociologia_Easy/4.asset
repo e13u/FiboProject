@@ -12,17 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f218be9518d33904abcd2331a665e74d, type: 3}
   m_Name: 4
   m_EditorClassIdentifier: 
-  _info: "Criador da geometrica anal\xEDtica..."
+  _info: "\xC9 o primeiro passo para que ocorra qualquer tipo de associa\xE7\xE3o
+    humana:"
   _answers:
-  - _info: Arquimedes
-    _isCorrect: 0
-  - _info: Isaac Newton
-    _isCorrect: 0
-  - _info: "Ren\xE9 Descartes"
+  - _info: contato social
     _isCorrect: 1
-  - _info: "\xC9variste Galois"
+  - _info: fato social
     _isCorrect: 0
-  - _info: Leonhard Euler
+  - _info: "organiza\xE7\xE3o social"
+    _isCorrect: 0
+  - _info: grupo social
     _isCorrect: 0
   _useTimer: 1
   _timer: 10

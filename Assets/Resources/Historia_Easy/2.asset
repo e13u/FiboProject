@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _info: "Em qual ano iniciou a revolu\xE7\xE3o francesa?"
   _answers:
-  - _info: 1785
-    _isCorrect: 0
   - _info: 1786
     _isCorrect: 0
   - _info: 1787

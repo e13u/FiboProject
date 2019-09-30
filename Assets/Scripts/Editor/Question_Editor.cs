@@ -14,6 +14,7 @@ public class Question_Editor : Editor {
     SerializedProperty  answerTypeProp          = null;
     SerializedProperty  addScoreProp            = null;
 
+    SerializedProperty imageProp                = null;
     SerializedProperty  arraySizeProp
     {
         get
@@ -38,6 +39,7 @@ public class Question_Editor : Editor {
         timerProp           = serializedObject.FindProperty("_timer");
         answerTypeProp      = serializedObject.FindProperty("_answerType");
         addScoreProp        = serializedObject.FindProperty("_addScore");
+        imageProp           = serializedObject.FindProperty("_questionImage");
         #endregion
 
         #region Get Values
@@ -88,6 +90,8 @@ public class Question_Editor : Editor {
                 }
             }
             addScoreProp.intValue = EditorGUILayout.IntSlider(new GUIContent("Add Score"), addScoreProp.intValue, 0, 100);
+            imageProp.objectReferenceValue = (Sprite)EditorGUILayout.ObjectField("Question Image", imageProp.objectReferenceValue, typeof(Sprite), allowSceneObjects: false);
+            
         }
         GUILayout.Space(7.5f);
         GUILayout.Label("Answers", EditorStyles.miniLabel);

@@ -12,7 +12,7 @@ public class GameEvents : ScriptableObject {
     public delegate void    UpdateQuestionAnswerCallback        (AnswerData pickedAnswer);
     public                  UpdateQuestionAnswerCallback        UpdateQuestionAnswer            = null;
 
-    public delegate void    DisplayResolutionScreenCallback     (UIManager.ResolutionScreenType type, int score, int themeID);
+    public delegate void    DisplayResolutionScreenCallback     (UIManager.ResolutionScreenType type, int score, int themeID, List<bool> answers);
     public                  DisplayResolutionScreenCallback     DisplayResolutionScreen         = null;
 
     public delegate void    ScoreUpdatedCallback();
@@ -27,6 +27,8 @@ public class GameEvents : ScriptableObject {
     public delegate void DisplayThemeAfterResolutionCallback();
     public DisplayThemeAfterResolutionCallback DisplayAfterResolution = null;
 
+    public delegate void ResetResolutionUICallBack();
+    public ResetResolutionUICallBack ResetResolutionUI = null;
     public int baseScore = 50;
     [Space]
     public                  int                                 round                           = 1;

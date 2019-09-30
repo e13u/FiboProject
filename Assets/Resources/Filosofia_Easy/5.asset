@@ -14,15 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _info: "Arist\xF3teles foi professor de qual grande conquistador"
   _answers:
-  - _info: Gengis Khan
+  - _info: Carlos Magno
     _isCorrect: 0
   - _info: Alexandre, o Grande
     _isCorrect: 1
   - _info: "Cle\xF3patra"
     _isCorrect: 0
   - _info: "Julio C\xE9sar"
-    _isCorrect: 0
-  - _info: Carlos Magno
     _isCorrect: 0
   _useTimer: 1
   _timer: 10
