@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class GameUtility {
-    public static List<int> sortedThemes = new List<int> {0,1,2,3,4,5 };
+    public static List<int> sortedThemes = new List<int> {0,1,2,3,4,5};
 
     public const float      ResolutionDelayTime     = 2;
     public const string     SavePKPKey             = "PKP_Value";
@@ -22,23 +22,23 @@ public class GameUtility {
     {
         switch (themeId)
         {
-            case 1:
+            case 0:
                 return "Portugues";
-            case 2:
+            case 1:
                 return "Biologia";
-            case 3:
+            case 2:
                 return "Geografia";
-            case 4:
+            case 3:
                 return "Artes";
-            case 5:
+            case 4:
                 return "Matematica";
-            case 6:
+            case 5:
                 return "Filosofia";
-            case 7:
+            case 6:
                 return "Fisica";
-            case 8:
+            case 7:
                 return "Historia";
-            case 9:
+            case 8:
                 return "Sociologia";
             default:
                 return "Meme";
@@ -50,23 +50,23 @@ public class GameUtility {
         switch (themeId)
         {
             case "Portugues":
-                return 1;
+                return 0;
             case "Biologia":
-                return 2;
+                return 1;
             case "Geografia":
-                return 3;
+                return 2;
             case "Artes":
-                return 4;
+                return 3;
             case "Matematica":
-                return 5;
+                return 4;
             case "Filosofia":
-                return 6;
+                return 5;
             case "Fisica":
-                return 7;
+                return 6;
             case "Historia":
-                return 8;
+                return 7;
             case "Sociologia":
-                return 9;
+                return 8;
             default:
                 return 10;
         }

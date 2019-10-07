@@ -9,5 +9,7 @@ public class ThemeButton : MonoBehaviour
         GetComponent<Image>().sprite = ThemeManager.Instance.PickSpriteFromTheme();
         GetComponent<Button>().interactable = false;
         GetComponentInChildren<TextMeshProUGUI>().text = ThemeManager.Instance.PickStringFromTheme(); 
+        ThemeManager.Instance.themeCounter++;
+        ThemeManager.Instance.VerifyStartGame();
     }
 }

@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour {
     private             IEnumerator         IE_StartTimer           = null;
 
     public List<int> selectedThemes = new List<int>();
+
+    public List<int> selectedThemesToEndGame = new List<int>();
+
     private int currentTheme = 0;
 
     public List<List<bool>> themeAnswersList = new List<List<bool>>();
@@ -97,9 +100,9 @@ public class GameManager : MonoBehaviour {
         catch (System.Exception)
         {
             
-            selectedThemes = new List<int> {1,2,3,4,5,6};
+            selectedThemes = new List<int> {0,1,2,3,4,5};
         }
-        selectedThemes.Add(0);
+        selectedThemesToEndGame = new List<int>(selectedThemes);
         selectedThemes.Sort();
     }
 
@@ -131,7 +134,7 @@ public class GameManager : MonoBehaviour {
     void SortTheme()
     {
         correctAnswerStreak = 0;
-        currentTheme = selectedThemes[Random.Range(1, selectedThemes.Count)];
+        currentTheme = selectedThemes[Random.Range(0, selectedThemes.Count-1)];
         selectedThemes.Remove(currentTheme);
         currentDPK = events.DKP[GameUtility.ThemeNameText(currentTheme)];
         //LoadData();
@@ -267,7 +270,7 @@ public class GameManager : MonoBehaviour {
             Debug.Log("BaseScore: " + events.baseScore + "  " + "TimeCoeficent: "
                 + timeCoeficent + "  " + " CorrectAnswerStreak: " + correctAnswerStreak + " FinalScore: "+score);
             UpdateScore(currentTheme, (int)score);
-            themeAnswersList[currentTheme - 1].Add(true);
+            themeAnswersList[currentTheme].Add(true);
         }
         else
         {
@@ -278,7 +281,7 @@ public class GameManager : MonoBehaviour {
             //UpdateScore(-data.Questions[currentQuestion].AddScore);
             int score = (correctAnswerStreak-1) * 10;
             UpdateScore(currentTheme, score);
-            themeAnswersList[currentTheme - 1].Add(false);
+            themeAnswersList[currentTheme].Add(false);
         }
 
         events.currentQuestionThemeNumber++;
@@ -316,7 +319,7 @@ public class GameManager : MonoBehaviour {
             : UIManager.ResolutionScreenType.Incorrect;
 
         // events.DisplayResolutionScreen?.Invoke(type, data.Questions[currentQuestion].AddScore);
-        events.DisplayResolutionScreen?.Invoke(type, Questions[currentQuestion].AddScore, currentTheme, themeAnswersList[currentTheme - 1]);
+        events.DisplayResolutionScreen?.Invoke(type, Questions[currentQuestion].AddScore, currentTheme, themeAnswersList[currentTheme]);
 
         AudioManager.Instance.PlaySound((isCorrect) ? "CorrectSFX" : "IncorrectSFX");
     }
@@ -441,12 +444,23 @@ public class GameManager : MonoBehaviour {
     private void SetHighscore()
     {
         UpdatePKP();
+        EndGameStatsPanel();
         var pkp = PlayerPrefs.GetInt(GameUtility.SavePKPKey);
         //if (pkp < events.CurrentFinalScore)
         //{
         PlayerPrefs.SetFloat(GameUtility.SavePKPKey, events.PKP);
         //}
     }
+
+    private void EndGameStatsPanel(){
+        for (int i = 0; i < selectedThemesToEndGame.Count; i++)
+        {
+            string themeText = GameUtility.ThemeNameText(selectedThemesToEndGame[i]);
+
+            events.EndGamePanelStats(selectedThemesToEndGame[i], themeAnswersList[i], events.DKP[themeText]);
+        }
+    }
+
     /// <summary>
     /// Function that is called update the score and update the UI.
     /// </summary>
@@ -489,16 +503,16 @@ public class GameManager : MonoBehaviour {
     {
         events.DKP.Clear();
         events.DPKList.Clear();
-        events.DKP.Add ("Teste",0);
-        events.DKP.Add("Portugues", 100);//1
-        events.DKP.Add("Biologia", 100);//2
-        events.DKP.Add("Geografia", 100);//3
-        events.DKP.Add("Artes", 100);//4
-        events.DKP.Add("Matematica", 100);//5
-        events.DKP.Add("Filosofia", 100);//6
-        events.DKP.Add("Fisica", 100);//7
-        events.DKP.Add("Historia", 100);//8
-        events.DKP.Add("Sociologia", 100);//9
+        //events.DKP.Add ("Teste",0);
+        events.DKP.Add("Portugues", 100);//0
+        events.DKP.Add("Biologia", 100);//1
+        events.DKP.Add("Geografia", 100);//2
+        events.DKP.Add("Artes", 100);//3
+        events.DKP.Add("Matematica", 100);//4
+        events.DKP.Add("Filosofia", 100);//5
+        events.DKP.Add("Fisica", 100);//6
+        events.DKP.Add("Historia", 100);//7
+        events.DKP.Add("Sociologia", 100);//8
 
 
         for (int i = 0; i < events.DKP.Count; i++)
@@ -522,7 +536,6 @@ public class GameManager : MonoBehaviour {
         int total = 0;
         for (int i = 1; i < events.DKP.Count; i++)
         {
-            Debug.Log(GameUtility.ThemeNameText(i));
             total += events.DKP[GameUtility.ThemeNameText(i)];
         }
         Debug.Log(total);
@@ -530,6 +543,7 @@ public class GameManager : MonoBehaviour {
         Debug.Log(media);
         events.PKP = media;
     }
+
     #endregion
 
     string VerifyTierForThemeDificulty(int tier)

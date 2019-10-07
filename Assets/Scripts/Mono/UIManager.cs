@@ -71,11 +71,19 @@ public struct UIElements
     public RectTransform FinishUIElements { get { return finishUIElements; } }
 
     [Space]
-     [SerializeField] RectTransform themeUIDisplay;
+    [SerializeField] RectTransform themeUIDisplay;
     public RectTransform ThemeUIDisplay {get {return themeUIDisplay;}}
     public List<Image> answersStars;
 
+
 }
+[Serializable()]
+public struct EndGameElements{
+    public Image themeImg;
+    public List<Image> answersStarsEnd;
+    public TextMeshProUGUI DKPText;
+}
+
 public class UIManager : MonoBehaviour {
 
     #region Variables
@@ -98,6 +106,8 @@ public class UIManager : MonoBehaviour {
 
     private             IEnumerator            IE_DisplayTimedResolution    = null;
 
+    public List<EndGameElements> endGameElements = new List<EndGameElements>();
+    private  int endGameCounter = 0;
     #endregion
 
     #region Default Unity methods
@@ -112,6 +122,7 @@ public class UIManager : MonoBehaviour {
         events.ScoreUpdated             += UpdateScoreUI;
         events.DisplayThemeScreen       += DisplayThemeScreen;
         events.ResetResolutionUI        += ResetResolutionUI;
+        events.EndGamePanelStats        += EndGamePanelStats;
     }
     /// <summary>
     /// Function that is called when the behaviour becomes disabled
@@ -123,6 +134,7 @@ public class UIManager : MonoBehaviour {
         events.ScoreUpdated             -= UpdateScoreUI;
         events.DisplayThemeScreen       -= DisplayThemeScreen;
         events.ResetResolutionUI        -= ResetResolutionUI;
+        events.EndGamePanelStats        -= EndGamePanelStats;
     }
 
     /// <summary>
@@ -157,12 +169,12 @@ public class UIManager : MonoBehaviour {
             uIElements.QuestionImageObject.enabled = true;
             uIElements.QuestionImageObject.sprite = question.QuestionImage;
             uIElements.QuestionInfoTextObject.rectTransform.sizeDelta = 
-            new Vector3(uIElements.QuestionInfoTextObject.rectTransform.sizeDelta.x, 200,0);
+            new Vector3(uIElements.QuestionInfoTextObject.rectTransform.sizeDelta.x, 500,0);
         }   
         else{
             uIElements.QuestionImageObject.enabled = false;
             uIElements.QuestionInfoTextObject.rectTransform.sizeDelta = 
-            new Vector3(uIElements.QuestionInfoTextObject.rectTransform.sizeDelta.x, 490,0);
+            new Vector3(uIElements.QuestionInfoTextObject.rectTransform.sizeDelta.x, 1000,0);
         }
         CreateAnswers(question);
     }
@@ -324,5 +336,28 @@ public class UIManager : MonoBehaviour {
     void UpdateScoreUI()
     {
         uIElements.ScoreText.text = "Score: " + events.CurrentFinalScore;
+    }
+
+    void EndGamePanelStats(int themeId, List<bool> themeAnswersList, int DKPScore){
+        endGameElements[endGameCounter].themeImg.sprite = parameters.themeStarsScreen[themeId];
+
+        if(themeAnswersList[0] == true) 
+            endGameElements[endGameCounter].answersStarsEnd[0].color = parameters.CorrectBGColor;
+        else
+             endGameElements[endGameCounter].answersStarsEnd[0].color = parameters.IncorrectBGColor;
+
+        if(themeAnswersList[1] == true) 
+            endGameElements[endGameCounter].answersStarsEnd[1].color = parameters.CorrectBGColor;
+        else
+             endGameElements[endGameCounter].answersStarsEnd[1].color = parameters.IncorrectBGColor;
+
+        if(themeAnswersList[2] == true) 
+            endGameElements[endGameCounter].answersStarsEnd[2].color = parameters.CorrectBGColor;
+        else
+             endGameElements[endGameCounter].answersStarsEnd[2].color = parameters.IncorrectBGColor;     
+
+        endGameElements[endGameCounter].DKPText.text = DKPScore.ToString();
+
+        endGameCounter++;
     }
 }

@@ -44,4 +44,7 @@ public class GameEvents : ScriptableObject {
     public          Dictionary<string, int>                     DKP = new Dictionary<string, int>();
     public                  float                                 PKP                             = 0;
     public List<int> DPKList = new List<int>();
+
+    public delegate void    EndGamePanelStatsCallBack(int themeId, List<bool> themeAnswersList, int DKPScore);
+    public                  EndGamePanelStatsCallBack     EndGamePanelStats = null; 
 }

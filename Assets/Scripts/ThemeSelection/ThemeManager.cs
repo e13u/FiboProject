@@ -8,7 +8,7 @@ public class ThemeManager : MonoBehaviour
     public List<int> themeList = new List<int>();
     public List<Sprite> themeListImages = new List<Sprite>();
     public static ThemeManager Instance;
-    private int themeCounter =0;
+    public int themeCounter = 0;
     // Start is called before the first frame update
     void Awake()
     {
@@ -17,7 +17,7 @@ public class ThemeManager : MonoBehaviour
     }
 
     void Start(){
-        List<int> randomPoolPickNumber = new List<int> {1,2,3,4,5,6,7,8,9};
+        List<int> randomPoolPickNumber = new List<int> {0,1,2,3,4,5,6,7,8};
         for (int i = 0; i < 6; i++)
         {
             int randomIndex = Random.Range(0,randomPoolPickNumber.Count-1);
@@ -26,21 +26,23 @@ public class ThemeManager : MonoBehaviour
         }        
     }
     public Sprite PickSpriteFromTheme(){
-        Sprite themeSprite = themeListImages[themeList[themeCounter]-1];
+        Sprite themeSprite = themeListImages[themeList[themeCounter]];
         //int themeId = themeList[themeCounter];
         //themeSprite = themeListImages[themeId-1];
-        themeCounter++;
-            if(themeCounter > 5)
-                Invoke("StartGame", 1);
         return themeSprite;
     }
 
     public string PickStringFromTheme(){
-        return GameUtility.ThemeNameText(themeList[themeCounter-1]);
+        return GameUtility.ThemeNameText(themeList[themeCounter]);
     }
 
     public void StartGame(){
         if(themeList.Count == 6)
             SceneManager.LoadScene("Game");
+    }
+
+    public void VerifyStartGame(){
+        if(themeCounter > 5)
+                Invoke("StartGame", 1);
     }
 }
