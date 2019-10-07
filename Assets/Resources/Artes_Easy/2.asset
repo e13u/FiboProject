@@ -26,3 +26,4 @@ MonoBehaviour:
   _timer: 10
   _answerType: 1
   _addScore: 10
+  _questionImage: {fileID: 21300000, guid: e8982534b1efc6840a0c33263d9cb315, type: 3}

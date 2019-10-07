@@ -151,11 +151,15 @@ public class UIManager : MonoBehaviour {
     #endregion
      void DisplayThemeScreen(int themeId, float alphaPanel){
         uIElements.ThemeUIDisplay.GetComponent<CanvasGroup>().alpha = alphaPanel;
-        if(alphaPanel > 0)
+        if(alphaPanel > 0){
             parameters.themePanelDisplay[themeId].gameObject.SetActive(true);
+            uIElements.ThemeUIDisplay.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+            
         else
         {
             parameters.themePanelDisplay[themeId].gameObject.SetActive(false);
+            uIElements.ThemeUIDisplay.GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
     }
 

@@ -267,8 +267,8 @@ public class GameManager : MonoBehaviour {
             float scoreStreakvalue = events.baseScore * correctAnswerStreak;
             float score = (timeCoeficent * scoreStreakvalue) +scoreStreakvalue;
 
-            Debug.Log("BaseScore: " + events.baseScore + "  " + "TimeCoeficent: "
-                + timeCoeficent + "  " + " CorrectAnswerStreak: " + correctAnswerStreak + " FinalScore: "+score);
+            // Debug.Log("BaseScore: " + events.baseScore + "  " + "TimeCoeficent: "
+            //     + timeCoeficent + "  " + " CorrectAnswerStreak: " + correctAnswerStreak + " FinalScore: "+score);
             UpdateScore(currentTheme, (int)score);
             themeAnswersList[currentTheme].Add(true);
         }
@@ -457,7 +457,9 @@ public class GameManager : MonoBehaviour {
         {
             string themeText = GameUtility.ThemeNameText(selectedThemesToEndGame[i]);
 
-            events.EndGamePanelStats(selectedThemesToEndGame[i], themeAnswersList[i], events.DKP[themeText]);
+            events.EndGamePanelStats(selectedThemesToEndGame[i], themeAnswersList[GameUtility.ThemeNameText(themeText)],
+             events.DKP[themeText]);
+            Debug.Log("themeText: "+themeText);
         }
     }
 
