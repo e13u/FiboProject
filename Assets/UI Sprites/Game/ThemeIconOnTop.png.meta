@@ -1,7 +1,34 @@
 fileFormatVersion: 2
 guid: e2ff299cbf05d6a49bd3fde79627469c
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -8031009776051573961
+    second: ThemeIconOnTop_0
+  - first:
+      213: -4085004973470422988
+    second: ThemeIcom_Language
+  - first:
+      213: 7487627128351661776
+    second: ThemeIcon_Math
+  - first:
+      213: -4885407694166612616
+    second: ThemeIcon_Biology
+  - first:
+      213: 24195743689887110
+    second: ThemeIcon_Arts
+  - first:
+      213: -7746407921568412144
+    second: ThemeIconOnTop_7
+  - first:
+      213: 1538810500889069326
+    second: ThemeIconOnTop_8
+  - first:
+      213: 382690482018995477
+    second: ThemeIcon_Geography
+  - first:
+      213: -8289295238134484663
+    second: ThemeIcon_Chemistry
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -84,11 +111,200 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ThemeIconOnTop_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 179
+        width: 82
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3b8cab794a48a64b875ec6aba18cc5f
+      internalID: -8031009776051573961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThemeIcom_Language
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 185
+        width: 70
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22b43d71d2296294aa721b23a852e6be
+      internalID: -4085004973470422988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThemeIcon_Math
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 181
+        width: 65
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6cc187314a6d3a408d1e2ee00a3eb65
+      internalID: 7487627128351661776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThemeIcon_Biology
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 102
+        width: 77
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87cf26c91f5f74849bdfc0943b0dc456
+      internalID: -4885407694166612616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThemeIcon_Arts
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 99
+        width: 76
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d3da783e446b404abdac3229dc6bc86
+      internalID: 24195743689887110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThemeIconOnTop_7
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 97
+        width: 61
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac0e41ee5ad0e28448827b227afd2789
+      internalID: -7746407921568412144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThemeIconOnTop_8
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 11
+        width: 84
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e603755ed19dfa43859d38206658a68
+      internalID: 1538810500889069326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThemeIcon_Geography
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 11
+        width: 70
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 230f5d28fbeff6948a72d7acc0445755
+      internalID: 382690482018995477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThemeIcon_Chemistry
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 11
+        width: 63
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e5d9e5dc22480e43a26c06b49cb83fc
+      internalID: -8289295238134484663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
