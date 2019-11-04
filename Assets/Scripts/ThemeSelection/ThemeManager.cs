@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class ThemeManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class ThemeManager : MonoBehaviour
     public List<Sprite> themeListImages = new List<Sprite>();
     public static ThemeManager Instance;
     public int themeCounter = 0;
+
+    public UnityEvent callNextScreen;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -43,6 +47,6 @@ public class ThemeManager : MonoBehaviour
 
     public void VerifyStartGame(){
         if(themeCounter > 5)
-                Invoke("StartGame", 1);
+            callNextScreen.Invoke();
     }
 }
