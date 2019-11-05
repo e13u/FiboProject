@@ -47,4 +47,7 @@ public class GameEvents : ScriptableObject {
 
     public delegate void    EndGamePanelStatsCallBack(int themeId, List<bool> themeAnswersList, int DKPScore);
     public                  EndGamePanelStatsCallBack     EndGamePanelStats = null; 
+
+    public delegate void   ThemeInGameElementsCallBack(int themeId);
+    public                 ThemeInGameElementsCallBack     ThemeInGameElements = null; 
 }

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField]    Animator            timerAnimtor            = null;
     [SerializeField]    TextMeshProUGUI     timerText               = null;
+    [SerializeField]    Image               timerImageFeedback      = null;
     [SerializeField]    Color               timerHalfWayOutColor    = Color.yellow;
     [SerializeField]    Color               timerAlmostOutColor     = Color.red;
     private             Color               timerDefaultColor       = Color.white;
@@ -53,7 +54,8 @@ public class GameManager : MonoBehaviour {
     public List<bool> soc_Aswers = new List<bool>();
 
     //temp  
-    public Text themeText;
+    public TextMeshProUGUI themeText;
+    public TextMeshProUGUI DKPText;
     public Text roundText;
 
     private             bool                IsFinished
@@ -148,7 +150,8 @@ public class GameManager : MonoBehaviour {
 
         string themeFile = GameUtility.ThemeNameText(currentTheme) + "_" + dificulty.ToString() + ".xml";
 
-        themeText.text = themeFile;
+        //themeText.text = GameUtility.ThemeNameText(currentTheme);
+        Debug.Log(themeText.text);
         Debug.Log("TEMA+DIFICULDADE:" + themeFile);
         var path = Path.Combine(GameUtility.FileDir, themeFile);
         data = Data.Fetch(path);
@@ -159,7 +162,9 @@ public class GameManager : MonoBehaviour {
 
     void LoadQuestions()
     {
-         string dificulty = VerifyTierForThemeDificulty(currentDPK);
+        DKPText.text = events.DKP[ GameUtility.ThemeNameText(currentTheme)].ToString();
+
+        string dificulty = VerifyTierForThemeDificulty(currentDPK);
 
         string themeFolder = GameUtility.ThemeNameText(currentTheme) + "_" + dificulty;
 
@@ -175,10 +180,13 @@ public class GameManager : MonoBehaviour {
     void ThemeDisplay(){
         //events.UpdateQuestionUI(null);
         events.DisplayThemeScreen(currentTheme, 1);
+        themeText.text = GameUtility.ThemeNameText(currentTheme);
+
         StartCoroutine("ThemeDisplayWait");
     }
     IEnumerator ThemeDisplayWait(){
         yield return new WaitForSeconds(2);
+        events.ThemeInGameElements(currentTheme);
         events.DisplayThemeScreen(currentTheme, 0);
         events.ResetResolutionUI();
         //StartCoroutine(IE_WaitTillNextRound);
@@ -365,16 +373,17 @@ public class GameManager : MonoBehaviour {
 
             AudioManager.Instance.PlaySound("CountdownSFX");
 
-            if (timeLeft < totalTime / 2 && timeLeft > totalTime / 4)
-            {
-                timerText.color = timerHalfWayOutColor;
-            }
-            if (timeLeft < totalTime / 4)
-            {
-                timerText.color = timerAlmostOutColor;
-            }
-
+            // if (timeLeft < totalTime / 2 && timeLeft > totalTime / 4)
+            // {
+            //     timerText.color = timerHalfWayOutColor;
+            // }
+            // if (timeLeft < totalTime / 4)
+            // {
+            //     timerText.color = timerAlmostOutColor;
+            // }
             timerText.text = timeLeft.ToString();
+            timerImageFeedback.fillAmount = (float)timeLeft/totalTime;
+            //Debug.Log("FillAmount: "+timerImageFeedback.fillAmount);
             yield return new WaitForSeconds(1.0f);
         }
         Accept();
@@ -531,6 +540,9 @@ public class GameManager : MonoBehaviour {
         events.DPKList[GameUtility.ThemeNameText(theme)] += scoreDKP;
         if (events.DPKList[GameUtility.ThemeNameText(theme)] < 0)
             events.DPKList[GameUtility.ThemeNameText(theme)] = 0;
+
+        DKPText.text = events.DKP[theme].ToString();
+
     }
 
     void UpdatePKP()
@@ -569,5 +581,18 @@ public class GameManager : MonoBehaviour {
         themeAnswersList.Add(fis_Aswers);
         themeAnswersList.Add(his_Aswers);
         themeAnswersList.Add(soc_Aswers);
+    }
+
+    void CalculateCorrectsRate(){
+        float totalQuestions = themeAnswersList.Count * themeAnswersList[0].Count;
+        float rightQuestions;
+
+        for (int i = 0; i < themeAnswersList.Count; i++)
+        {
+            for (int j = 0; j < themeAnswersList[i].Count; j++)
+            {
+                themeAnswersList[i].
+            }
+        }
     }
 }

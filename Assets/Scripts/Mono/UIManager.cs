@@ -53,6 +53,8 @@ public struct UIElements
     [SerializeField] Image resolutionBG;
     public Image ResolutionBG { get { return resolutionBG; } }
 
+    [SerializeField] Image resolutionTheme;
+    public Image ResolutionTheme { get { return resolutionTheme; } }
     [SerializeField] TextMeshProUGUI resolutionStateInfoText;
     public TextMeshProUGUI ResolutionStateInfoText { get { return resolutionStateInfoText; } }
 
@@ -84,6 +86,12 @@ public struct EndGameElements{
     public TextMeshProUGUI DKPText;
 }
 
+[Serializable()]
+public struct ThemeInGameElements{
+    public Sprite themeIconImg;
+    public Color themeColor;
+}
+
 public class UIManager : MonoBehaviour {
 
     #region Variables
@@ -108,6 +116,14 @@ public class UIManager : MonoBehaviour {
 
     public List<EndGameElements> endGameElements = new List<EndGameElements>();
     private  int endGameCounter = 0;
+
+    public List<ThemeInGameElements> themeInGameElements = new List<ThemeInGameElements>();
+    public Image themeIcon;
+    public Image starIcon;
+    public Image answerPrefabObj;
+    public Image timerFeedbackImage;
+
+    
     #endregion
 
     #region Default Unity methods
@@ -123,6 +139,7 @@ public class UIManager : MonoBehaviour {
         events.DisplayThemeScreen       += DisplayThemeScreen;
         events.ResetResolutionUI        += ResetResolutionUI;
         events.EndGamePanelStats        += EndGamePanelStats;
+        events.ThemeInGameElements      += ThemeInGameElementsDisplay;
     }
     /// <summary>
     /// Function that is called when the behaviour becomes disabled
@@ -135,6 +152,8 @@ public class UIManager : MonoBehaviour {
         events.DisplayThemeScreen       -= DisplayThemeScreen;
         events.ResetResolutionUI        -= ResetResolutionUI;
         events.EndGamePanelStats        -= EndGamePanelStats;
+        events.ThemeInGameElements      -= ThemeInGameElementsDisplay;
+
     }
 
     /// <summary>
@@ -163,6 +182,13 @@ public class UIManager : MonoBehaviour {
         }
     }
 
+    void ThemeInGameElementsDisplay(int theme){
+        themeIcon.color = themeInGameElements[theme].themeColor;
+        starIcon.color = themeInGameElements[theme].themeColor;
+        timerFeedbackImage.color = themeInGameElements[theme].themeColor;
+        answerPrefabObj.color = themeInGameElements[theme].themeColor;
+    }
+
     /// <summary>
     /// Function that is used to update new question UI information.
     /// </summary>
@@ -188,7 +214,7 @@ public class UIManager : MonoBehaviour {
     void DisplayResolution(ResolutionScreenType type, int score, int themeID, List<bool> answers)
     {
         UpdateResUI(type, score, themeID, answers);
-        uIElements.ResolutionScreenAnimator.SetInteger(resStateParaHash, 2);
+        //uIElements.ResolutionScreenAnimator.SetInteger(resStateParaHash, 2);
         uIElements.MainCanvasGroup.blocksRaycasts = false;
         uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().alpha = 1;
 
@@ -219,19 +245,19 @@ public class UIManager : MonoBehaviour {
     {
         //var highscore = PlayerPrefs.GetInt(GameUtility.SavePKPKey);
         //var highscore = events.PKP;
-        uIElements.ResolutionBG.sprite = parameters.themeStarsScreen[themeID];
+        uIElements.ResolutionTheme.sprite = parameters.themeStarsScreen[themeID];
 
         switch (type)
         {
             case ResolutionScreenType.Correct:
                 uIElements.ResolutionBG.color = parameters.CorrectBGColor;
-                uIElements.ResolutionStateInfoText.text = "resposta certa!";
-                uIElements.ResolutionScoreText.text = "+" + score;
+                uIElements.ResolutionStateInfoText.text = "Resposta certa!";
+                //uIElements.ResolutionScoreText.text = "+" + score;
                 break;
             case ResolutionScreenType.Incorrect:
                 uIElements.ResolutionBG.color = parameters.IncorrectBGColor;
-                uIElements.ResolutionStateInfoText.text = "resposta errada :(";
-                uIElements.ResolutionScoreText.text = "-" + score;
+                uIElements.ResolutionStateInfoText.text = "Resposta errada :(";
+                //uIElements.ResolutionScoreText.text = "-" + score;
                 break;
             case ResolutionScreenType.Finish:
                 //uIElements.ResolutionBG.color = parameters.FinalBGColor;
