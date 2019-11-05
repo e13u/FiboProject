@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour {
     //temp  
     public TextMeshProUGUI themeText;
     public TextMeshProUGUI DKPText;
+    public Text correctsAnswersRateText;
     public Text roundText;
 
     private             bool                IsFinished
@@ -454,6 +455,7 @@ public class GameManager : MonoBehaviour {
     {
         UpdatePKP();
         EndGameStatsPanel();
+        CalculateCorrectsRate();
         var pkp = PlayerPrefs.GetInt(GameUtility.SavePKPKey);
         //if (pkp < events.CurrentFinalScore)
         //{
@@ -584,15 +586,19 @@ public class GameManager : MonoBehaviour {
     }
 
     void CalculateCorrectsRate(){
-        float totalQuestions = themeAnswersList.Count * themeAnswersList[0].Count;
-        float rightQuestions;
+        float totalQuestions = 6 * 3;
+        float rightQuestions = 0;
 
         for (int i = 0; i < themeAnswersList.Count; i++)
         {
             for (int j = 0; j < themeAnswersList[i].Count; j++)
             {
-                themeAnswersList[i].
+                if( themeAnswersList[i].ElementAt(j) == true){
+                    rightQuestions++;
+                }
             }
         }
+        float media = rightQuestions/totalQuestions;
+        correctsAnswersRateText.text = "▴"+(media * 100).ToString("C2")+"%";
     }
 }

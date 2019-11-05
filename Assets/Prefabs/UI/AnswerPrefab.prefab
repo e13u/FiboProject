@@ -68,8 +68,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "Poss\xEDvel Resposta"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 694de87fc1a057443942578d0fce2bb0, type: 2}
-  m_sharedMaterial: {fileID: -8036090526389612631, guid: 694de87fc1a057443942578d0fce2bb0,
+  m_fontAsset: {fileID: 11400000, guid: 72c5c22f2851a1b44b4624188bc8b249, type: 2}
+  m_sharedMaterial: {fileID: 549521401958357237, guid: 72c5c22f2851a1b44b4624188bc8b249,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 2425050287518314555}
   - component: {fileID: 8556269016253697560}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [Montserrat-Regular SDF Material + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [LATO-REGULAR SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

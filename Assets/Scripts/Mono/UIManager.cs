@@ -83,7 +83,7 @@ public struct UIElements
 public struct EndGameElements{
     public Image themeImg;
     public List<Image> answersStarsEnd;
-    public TextMeshProUGUI DKPText;
+    public Text DKPText;
 }
 
 [Serializable()]
@@ -300,10 +300,11 @@ public class UIManager : MonoBehaviour {
     IEnumerator DelayFinishResolution()
     {
         yield return new WaitForSeconds(GameUtility.ResolutionDelayTime);
-        uIElements.ResolutionBG.color = parameters.FinalBGColor;
-        uIElements.ResolutionStateInfoText.text = "FINAL SCORE";
-        uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().interactable = true;
-        uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        //uIElements.ResolutionBG.color = parameters.FinalBGColor;
+        uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().alpha = 0;
+        //uIElements.ResolutionStateInfoText.text = "FINAL SCORE";
+        uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().interactable = false;
+        uIElements.ResolutionBG.transform.parent.GetComponent<CanvasGroup>().blocksRaycasts = false;
         StartCoroutine(CalculateScore());
         uIElements.FinishUIElements.gameObject.SetActive(true);
         uIElements.HighScoreText.gameObject.SetActive(true);
@@ -387,7 +388,7 @@ public class UIManager : MonoBehaviour {
              endGameElements[endGameCounter].answersStarsEnd[2].color = parameters.IncorrectBGColor;     
 
         endGameElements[endGameCounter].DKPText.text = DKPScore.ToString();
-
+        endGameElements[endGameCounter].themeImg.color = themeInGameElements[endGameCounter].themeColor;
         endGameCounter++;
     }
 }
