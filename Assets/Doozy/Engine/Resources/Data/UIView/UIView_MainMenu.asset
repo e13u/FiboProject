@@ -15,6 +15,19 @@ MonoBehaviour:
   CategoryName: MainMenu
   DatabaseType: 2
   Names:
-  - Menu
-  - Play
   - Config
+  - ConnectScreens
+  - Login
+  - MainScreen
+  - Match
+  - MatchesPending
+  - MatchFriend
+  - MatchScreen
+  - OverlayPanel
+  - PendingMatches
+  - PerformanceTab
+  - SearchUser
+  - SetupTab
+  - SocialTab
+  - UI
+  - UserPanel

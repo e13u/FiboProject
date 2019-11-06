@@ -15,6 +15,7 @@ MonoBehaviour:
   CategoryName: Splash Screens
   DatabaseType: 2
   Names:
+  - ConnectScreens
+  - LogoFibo
+  - LogoGlitch
   - Tela01
-  - Tela02
-  - Tela03
