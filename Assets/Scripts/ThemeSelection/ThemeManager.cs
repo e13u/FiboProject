@@ -42,7 +42,7 @@ public class ThemeManager : MonoBehaviour
 
     public void StartGame(){
         if(themeList.Count == 6)
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("MatchScene");
     }
 
     public void VerifyStartGame(){

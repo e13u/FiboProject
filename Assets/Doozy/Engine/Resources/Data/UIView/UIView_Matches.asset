@@ -20,3 +20,5 @@ MonoBehaviour:
   - SearchMatch
   - PendingMatches
   - Play
+  - ThemeSelection
+  - Results
