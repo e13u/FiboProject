@@ -65,7 +65,7 @@ MonoBehaviour:
     m_id: 365c8455-35e4-47c1-b078-7043748f17e4
     m_nodeId: 356bce3b-d306-4d3b-b403-5492e9aaf2bf
     m_socketName: OutputSocket_0
-    m_value: '{"ButtonCategory":"General","ButtonName":"Back","GameEvent":"","TimeDelay":2.0,"Trigger":4}'
+    m_value: '{"ButtonCategory":"General","ButtonName":"Back","GameEvent":"","TimeDelay":4.0,"Trigger":4}'
     m_valueTypeQualifiedName: Doozy.Engine.UI.Connections.UIConnection, Assembly-CSharp,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_nodeType: 4
@@ -160,7 +160,7 @@ MonoBehaviour:
     m_id: 560c251b-6ab2-421f-8426-5d81534892f1
     m_nodeId: ac12a3cd-93dd-4fff-bf74-2516dfa72009
     m_socketName: OutputSocket_0
-    m_value: '{"ButtonCategory":"UserScreen","ButtonName":"ConnectGoogle","GameEvent":"","TimeDelay":1.0,"Trigger":4}'
+    m_value: '{"ButtonCategory":"UserScreen","ButtonName":"ConnectGoogle","GameEvent":"","TimeDelay":2.0,"Trigger":4}'
     m_valueTypeQualifiedName: Doozy.Engine.UI.Connections.UIConnection, Assembly-CSharp,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_nodeType: 4
@@ -428,7 +428,7 @@ MonoBehaviour:
   m_version: 1
   m_description: 
   m_id: ceef30dd-e3ea-420c-bf7a-94be6b8e9ee1
-  m_lastModified: 132174822109782059
+  m_lastModified: 132174884244141579
 --- !u!114 &5279472807798978528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -594,7 +594,7 @@ MonoBehaviour:
     m_id: aa34b138-d9bb-4f46-b504-a31836b64c3d
     m_nodeId: dc4aa630-cf85-4ec2-9fc1-bf920c2995d6
     m_socketName: OutputSocket_0
-    m_value: '{"ButtonCategory":"General","ButtonName":"Back","GameEvent":"","TimeDelay":2.0,"Trigger":4}'
+    m_value: '{"ButtonCategory":"General","ButtonName":"Back","GameEvent":"","TimeDelay":4.0,"Trigger":4}'
     m_valueTypeQualifiedName: Doozy.Engine.UI.Connections.UIConnection, Assembly-CSharp,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_nodeType: 4
