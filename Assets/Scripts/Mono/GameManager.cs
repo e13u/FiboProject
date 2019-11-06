@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour {
     public List<bool> soc_Aswers = new List<bool>();
 
     //temp  
-    public TextMeshProUGUI themeText;
+    public Text themeText;
     public TextMeshProUGUI DKPText;
     public Text correctsAnswersRateText;
     public Text roundText;
@@ -431,11 +431,11 @@ public class GameManager : MonoBehaviour {
     /// <summary>
     /// Function that is called restart the game.
     /// </summary>
-    public void RestartGame()
+    public void RestartGame(string sceneName)
     {
         //If next level is the first level, meaning that we start playing a game again, reset the final score.
         //if (events.round == 1) { events.CurrentFinalScore = 0; }        
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(sceneName);
     }
     /// <summary>
     /// Function that is called to quit the application.
@@ -517,14 +517,14 @@ public class GameManager : MonoBehaviour {
         events.DKP.Clear();
         events.DPKList.Clear();
         //events.DKP.Add ("Teste",0);
-        events.DKP.Add("Portugues", 100);//0
+        events.DKP.Add("Português", 100);//0
         events.DKP.Add("Biologia", 100);//1
         events.DKP.Add("Geografia", 100);//2
         events.DKP.Add("Artes", 100);//3
-        events.DKP.Add("Matematica", 100);//4
+        events.DKP.Add("Matemática", 100);//4
         events.DKP.Add("Filosofia", 100);//5
-        events.DKP.Add("Fisica", 100);//6
-        events.DKP.Add("Historia", 100);//7
+        events.DKP.Add("Física", 100);//6
+        events.DKP.Add("História", 100);//7
         events.DKP.Add("Sociologia", 100);//8
 
 

@@ -23,7 +23,7 @@ public class GameUtility {
         switch (themeId)
         {
             case 0:
-                return "Portugues";
+                return "Português";
             case 1:
                 return "Biologia";
             case 2:
@@ -31,13 +31,13 @@ public class GameUtility {
             case 3:
                 return "Artes";
             case 4:
-                return "Matematica";
+                return "Matemática";
             case 5:
                 return "Filosofia";
             case 6:
-                return "Fisica";
+                return "Física";
             case 7:
-                return "Historia";
+                return "História";
             case 8:
                 return "Sociologia";
             default:
@@ -49,7 +49,7 @@ public class GameUtility {
     {
         switch (themeId)
         {
-            case "Portugues":
+            case "Português":
                 return 0;
             case "Biologia":
                 return 1;
@@ -57,13 +57,13 @@ public class GameUtility {
                 return 2;
             case "Artes":
                 return 3;
-            case "Matematica":
+            case "Matemática":
                 return 4;
             case "Filosofia":
                 return 5;
-            case "Fisica":
+            case "Física":
                 return 6;
-            case "Historia":
+            case "História":
                 return 7;
             case "Sociologia":
                 return 8;
